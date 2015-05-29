@@ -2013,6 +2013,20 @@
      </Anchor>
     </Anchors>
    </Frame>
+   
+   <!-- Icon Name Editbox -->
+   <EditBox name="$parentIconNameEditbox" inherits="MSBTEditboxTemplate">
+    <Size>
+     <AbsDimension x="180" y="22" />
+    </Size>
+    <Anchors>
+     <Anchor point="TOPLEFT" relativeTo="$parentPriestCheckbox" relativePoint="BOTTOMLEFT">
+      <Offset>
+       <AbsDimension x="190" y="-30" />
+      </Offset>
+     </Anchor>
+    </Anchors>
+   </EditBox>
 
    <!-- Threshold Slider -->
    <Slider name="$parentThresholdSlider" inherits="MSBTSliderTemplate">
@@ -2226,7 +2240,7 @@
      <Anchors>
       <Anchor point="TOPLEFT">
        <Offset>
-        <AbsDimension x="8" y="1" />
+        <AbsDimension x="8" y="-3" />
        </Offset>
       </Anchor>
      </Anchors>

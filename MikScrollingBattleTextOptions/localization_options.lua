@@ -1,6 +1,7 @@
 -------------------------------------------------------------------------------------
 -- Title: Mik's Scrolling Battle Text Options
 -- Author: Mik
+-- Maintainer: Athene
 -------------------------------------------------------------------------------------
 
 -- Create Options "namespace."
@@ -126,6 +127,7 @@ MikSBTOpt.EDITBOXES = {
  ["Tab1FrameNewProfileNameEditbox"]	= { Label="New Profile Name", Tooltip="Allows you to enter the name of a new profile."},
  ["XOffsetEditbox"]			= { Label="X Offset", Tooltip="Allows you to enter the X offset of the selected scroll frame."},
  ["YOffsetEditbox"]			= { Label="Y Offset", Tooltip="Allows you to enter the Y offset of the selected scroll frame."},
+ ["IconNameEditbox"]			= { Label="Icon Path", Tooltip="Allows you to enter the path of the file to display as icon."},
  ["SearchPattern1Editbox"]		= { Label="Search Pattern 1", Tooltip="Allows you to enter a search pattern that will cause the trigger to fire."},
  ["SearchPattern2Editbox"]		= { Label="Search Pattern 2", Tooltip="Allows you to enter a search pattern that will cause the trigger to fire."},
 };

@@ -1,6 +1,7 @@
--------------------------------------------------------------------------------------
+﻿-------------------------------------------------------------------------------------
 -- Title: Mik's Scrolling Battle Text
 -- Author: Mik
+-- Maintainer: Athene
 -------------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------------
@@ -25,8 +26,96 @@ MikSBT.CurrentProfile = nil;
 -- Private constants.
 -------------------------------------------------------------------------------------
 
+-- cache des icones trouvées par l'algo et des icones qu'il ne trouverait pas
+if not ICON_CACHE then
+	ICON_CACHE = {}
+end
+ICON_CACHE["repousser au loin"] =				"Interface\\Icons\\Inv_Gauntlets_05"
+ICON_CACHE["rupture du sol"] =					"Interface\\Icons\\Spell_Nature_Earthquake"
+ICON_CACHE["rayon de l'oeil"] =					"Interface\\Icons\\Spell_Nature_Callstorm"
+ICON_CACHE["salve de traits de l'ombre"] =		"Interface\\Icons\\Spell_Shadow_Shadowbolt"
+ICON_CACHE["tempête d'ombre"] =					"Interface\\Icons\\spell_shadow_shadowbolt"
+ICON_CACHE["gaz"] =								"Interface\\Icons\\Spell_Nature_Abolishmagic"
+ICON_CACHE["décimer"] =							"Interface\\Icons\\Inv_Shield_01"
+ICON_CACHE["champ statique"] =					"Interface\\Icons\\Spell_Nature_WispHeal"
+ICON_CACHE["horion"] =							"Interface\\Icons\\Spell_Nature_WispHeal"
+ICON_CACHE["secousse"] =						"Interface\\Icons\\spell_nature_earthquake"
+ICON_CACHE["charge de bouclier"] =				"Interface\\Icons\\ability_warrior_charge"
+ICON_CACHE["eclair des arcanes"] =				"Interface\\Icons\\spell_arcane_starfire"
+ICON_CACHE["gémissement des âmes"] =			"Interface\\Icons\\spell_nature_lightning"
+ICON_CACHE["trait noir"] =						"Interface\\Icons\\spell_shadow_shadowbolt"
+ICON_CACHE["infusion de mana"] =				"Interface\\Icons\\inv_trinket_naxxramas01"
+ICON_CACHE["afflux"] =							"Interface\\Icons\\Ability_Warrior_Charge"
+ICON_CACHE["frappe"] =							"Interface\\Icons\\Ability_Rogue_Ambush"
+ICON_CACHE["souffle de lave"] =					"Interface\\Icons\\Spell_Fire_WindsOfWoe"
+ICON_CACHE["frappe des ailes"] =				"Interface\\Icons\\Inv_Misc_Monsterscales_14"
+ICON_CACHE["lance de flammes"] =				"Interface\\Icons\\Ability_Throw"
+ICON_CACHE["horion de l'ombre"] =				"Interface\\Icons\\Spell_Shadow_Shadowbolt"
+ICON_CACHE["explosion de lave"] =				"Interface\\Icons\\Spell_Fire_Volcano"
+ICON_CACHE["bouclier de lave"] =				"Interface\\Icons\\Spell_Fire_Immolation"
+ICON_CACHE["fleur de feu"] =					"Interface\\Icons\\Spell_Fire_Fireball02"
+ICON_CACHE["bombe"] =							"Interface\\Icons\\Spell_Fire_Selfdestruct"
+ICON_CACHE["explosion"] =						"Interface\\Icons\\Spell_Fire_Selfdestruct"
+ICON_CACHE["colère de ragnaros"] =				"Interface\\Icons\\Spell_Fire_Soulburn"
+ICON_CACHE["choc"] =							"Interface\\Icons\\Ability_Smash"
+ICON_CACHE["secousse violente"] =				"Interface\\Icons\\Ability_Smash"
+ICON_CACHE["nova de feu"] =						"Interface\\Icons\\Spell_Fire_SealOfFire"
+ICON_CACHE["marque de détonation"] =			"Interface\\Icons\\spell_fire_selfdestruct"
+ICON_CACHE["cône de feu"] =						"Interface\\Icons\\Spell_Fire_WindsOfWoe"
+ICON_CACHE["volée de boules de feu"] =			"Interface\\Icons\\Spell_Fire_Flamebolt"
+ICON_CACHE["vague de foudre"] =					"Interface\\Icons\\Spell_Nature_Chainlightning"
+ICON_CACHE["coup de queue"] =					"Interface\\Icons\\Inv_Misc_MonsterScales_05"
+ICON_CACHE["exploiter faiblesse"] =				"Interface\\Icons\\ability_backstab"
+ICON_CACHE["lancer feu liquide"] =				"Interface\\Icons\\spell_fire_meteorstorm"
+ICON_CACHE["poing de force"] =					"Interface\\Icons\\inv_gauntlets_31"
+ICON_CACHE["uppercut"] =						"Interface\\Icons\\inv_gauntlets_31"
+ICON_CACHE["sangsue"] =							"Interface\\Icons\\ability_racial_cannibalize"
+ICON_CACHE["choc de feu"] =						"Interface\\Icons\\spell_fire_immolation"
+ICON_CACHE["malédiction du sang"] =				"Interface\\Icons\\spell_shadow_ritualofsacrifice"
+ICON_CACHE["brasier"] =							"Interface\\Icons\\spell_fire_incinerate"
+ICON_CACHE["météore"] =							"Interface\\Icons\\spell_fire_meteorstorm"
+ICON_CACHE["jet de poison"] =					"Interface\\Icons\\spell_nature_corrosivebreath"
+ICON_CACHE["explosion d'ombre"] =				"Interface\\Icons\\spell_shadow_antishadow"
+ICON_CACHE["voile de l'ombre"] =				"Interface\\Icons\\spell_shadow_gathershadows"
+ICON_CACHE["nuée maléfique"] =					"Interface\\Icons\\spell_nature_abolishmagic"
+ICON_CACHE["crachat empoisonné"] =				"Interface\\Icons\\spell_nature_corrosivebreath"
+ICON_CACHE["piétiner"] =						"Interface\\Icons\\spell_nature_natureswrath"
+ICON_CACHE["spores mutées"] =					"Interface\\Icons\\spell_nature_abolishmagic"
+ICON_CACHE["heurtoir du vomisseur de bile"] =	"Interface\\Icons\\ability_devour"
+ICON_CACHE["eruption"] =						"Interface\\Icons\\spell_fire_volcano"
+ICON_CACHE["tempête de mana"] =					"Interface\\Icons\\spell_frost_icestorm"
+ICON_CACHE["frappe sacrée"] =					"Interface\\Icons\\ability_thunderbolt"
+ICON_CACHE["grondement du tonnerre"] =			"Interface\\Icons\\spell_nature_thunderclap"
+ICON_CACHE["déflagration des arcanes"] =		"Interface\\Icons\\spell_shadow_deathpact"
+ICON_CACHE["nuage pestilentiel"] =				"Interface\\Icons\\spell_nature_abolishmagic"
+ICON_CACHE["régénération de mana"] =			"Interface\\Icons\\spell_nature_manaregentotem"
+ICON_CACHE["potion de soins"] =					"Interface\\Icons\\inv_potion_54"
+ICON_CACHE["restauration du mana"] =			"Interface\\Icons\\inv_potion_76"
+ICON_CACHE["rune démoniaque"] =					"Interface\\Icons\\inv_misc_rune_04"
+ICON_CACHE["rune ténébreuse"] =					"Interface\\Icons\\spell_shadow_sealofkings"
+ICON_CACHE["absorption de magie"] =				"Interface\\Icons\\spell_nature_astralrecalgroup"
+ICON_CACHE["gel"] =				"Interface\\Icons\\spell_frost_glacier"
+
+ICON_CACHE["lésions cérébrales"] =				"Interface\\Icons\\ability_gouge"
+ICON_CACHE["décharge électrique"] =				"Interface\\Icons\\spell_lightning_lightningbolt01"
+ICON_CACHE["foudre"] =							"Interface\\Icons\\spell_lightning_lightningbolt01"
+ICON_CACHE["enchantement flamboyant"] =			"Interface\\Icons\\spell_fire_selfdestruct"
+ICON_CACHE["pierre de soins supérieure"] =		"Interface\\Icons\\inv_stone_04"
+ICON_CACHE["pierre de soins mineure"] =			"Interface\\Icons\\inv_stone_04"
+ICON_CACHE["pierre de soins inférieure"] =		"Interface\\Icons\\inv_stone_04"
+ICON_CACHE["pierre de soins majeure"] =			"Interface\\Icons\\inv_stone_04"
+ICON_CACHE["pierre de soins"] =					"Interface\\Icons\\inv_stone_04"
+ICON_CACHE["capturer un esprit"] =					"Interface\\Icons\\Spell_Shadow_Haunting"
+
+
+-- Cache des spells dont l'icone n'a pas été trouvée
+NO_ICON_CACHE = {}
+
+-- Babble-Spell pour les icones des spells de class
+local BS = AceLibrary("Babble-Spell-2.2")
+
 -- Number of font strings.
-local NUM_FONT_STRINGS = 15;
+local NUM_FONT_STRINGS = 20;
 
 -- Animation values for incoming and outgoing events.
 local MIN_VERTICAL_SPACING = 8;
@@ -40,7 +129,7 @@ local STICKY_DISPLAY_TIME = 2;
 local STICKY_FADE_OUT_TIME = 0.5;
 
 -- The animation speed.
-local ANIMATION_SPEED = 0.015;
+local ANIMATION_SPEED = 0.02;
 
 -- Scroll directions
 local SCROLL_DIRECTION_UP			= 1;
@@ -83,9 +172,9 @@ local stillMerging = false;
 local activeNonStickies = {};
 local activeStickies = {};
 
--- Create a new table recycler object that holds up to 50 table references
+-- Create a new table recycler object that holds up to 40 table references
 -- in primary cache.
-local eventsRecycler = MikTRO:NewRecyclerObject(50);
+local eventsRecycler = MikTRO:NewRecyclerObject(40);
 
 
 -------------------------------------------------------------------------------------
@@ -482,7 +571,11 @@ function MikSBT.CombatEventsHandler(combatEvent)
  end
 
  -- Copy the amount, effect name, and player/enemy name from the passed combat event data.
- animationEvent.Amount = combatEvent.Amount;
+ -- if combatEvent.Amount then
+ -- animationEvent.Amount = combatEvent.Amount * 420;
+ -- else
+  animationEvent.Amount = combatEvent.Amount;
+ -- end
  animationEvent.EffectName = combatEvent.EffectName;
  animationEvent.Name = combatEvent.Name;
 
@@ -490,19 +583,19 @@ function MikSBT.CombatEventsHandler(combatEvent)
  if (combatEvent.DamageType ~= nil) then
   animationEvent.DamageType = MikCEH.GetDamageTypeString(combatEvent.DamageType);
  end
-
+ 
  -- If there are partial action types set the partial effect text appropriately.
  if (combatEvent.PartialActionType == MikCEH.PARTIALACTIONTYPE_ABSORB) then
   if (ABSORB_TRAILER) then
-   animationEvent.PartialEffectText = string.gsub(ABSORB_TRAILER, "%%d", combatEvent.PartialAmount);
+   animationEvent.PartialEffectText = "\124cffFAFA00\124h"..string.gsub(ABSORB_TRAILER, "%%d", combatEvent.PartialAmount).."\124h\124r";
   end
  elseif (combatEvent.PartialActionType == MikCEH.PARTIALACTIONTYPE_BLOCK) then
   if (BLOCK_TRAILER) then
-   animationEvent.PartialEffectText = string.gsub(BLOCK_TRAILER, "%%d", combatEvent.PartialAmount);
+   animationEvent.PartialEffectText = "\124cff7F00FF\124h"..string.gsub(BLOCK_TRAILER, "%%d", combatEvent.PartialAmount).."\124h\124r";
   end
  elseif (combatEvent.PartialActionType == MikCEH.PARTIALACTIONTYPE_RESIST) then
   if (RESIST_TRAILER) then
-   animationEvent.PartialEffectText = string.gsub(RESIST_TRAILER, "%%d", combatEvent.PartialAmount);
+   animationEvent.PartialEffectText = " \124cff81007F\124h"..string.gsub(RESIST_TRAILER, "%%d", combatEvent.PartialAmount).."\124h\124r";
   end
  elseif (combatEvent.PartialActionType == MikCEH.PARTIALACTIONTYPE_VULNERABLE) then
   if (MikSBT.MSG_VULERNABLE_TRAILER) then
@@ -510,11 +603,11 @@ function MikSBT.CombatEventsHandler(combatEvent)
   end
  elseif (combatEvent.PartialActionType == MikCEH.PARTIALACTIONTYPE_CRUSHING) then
   if (CRUSHING_TRAILER) then
-   animationEvent.PartialEffectText = CRUSHING_TRAILER;
+   animationEvent.PartialEffectText = "\124cff7D0000\124h"..CRUSHING_TRAILER.."\124h\124r";
   end
  elseif (combatEvent.PartialActionType == MikCEH.PARTIALACTIONTYPE_GLANCING) then
   if (GLANCING_TRAILER) then
-   animationEvent.PartialEffectText = GLANCING_TRAILER;
+   animationEvent.PartialEffectText = "\124cffFA0000\124h"..GLANCING_TRAILER.."\124h\124r";
   end
  elseif (combatEvent.PartialActionType == MikCEH.PARTIALACTIONTYPE_OVERHEAL) then
   animationEvent.OverhealAmount = combatEvent.PartialAmount;
@@ -553,6 +646,10 @@ function MikSBT.TriggerHandler(triggerEvent)
   animationEvent.ScrollArea = scrollAreas.Notification;
   animationEvent.EventSettings = MikSBT.CurrentProfile.Triggers[triggerEvent.TriggerKey].EventSettings;
   MikSBT.FormatTriggerText(animationEvent, triggerEvent);
+  
+  if (MikSBT.CurrentProfile.Triggers[triggerEvent.TriggerKey].Texture) then
+	 animationEvent.Texture = MikSBT.CurrentProfile.Triggers[triggerEvent.TriggerKey].Texture
+  end
 
   -- Dispatch the event to the animation system.
   MikSBT.DispatchAnimationEvent(animationEvent);
@@ -637,7 +734,11 @@ function MikSBT.MergeEvents(mergeData, numEvents)
 
     -- If the events have an amount then total them.
     if (animationEvent.Amount ~= nil and mergeData.UnmergedEvents[x].Amount ~= nil) then
-     animationEvent.Amount = animationEvent.Amount + mergeData.UnmergedEvents[x].Amount;
+	 animationEvent.Amount = tonumber (animationEvent.Amount, 10)
+		if animationEvent.Amount and mergeData.UnmergedEvents[x].Amount then
+			animationEvent.Amount = animationEvent.Amount + mergeData.UnmergedEvents[x].Amount;
+		end
+     -- animationEvent.Amount = animationEvent.Amount + mergeData.UnmergedEvents[x].Amount;
     end
 
     -- Check if there is an overheal amount and total it.
@@ -916,12 +1017,39 @@ end
 -- **********************************************************************************
 function MikSBT.FormatEventText(animationEvent)
  local outputString = animationEvent.UnformattedText;
-
+ 
+ -- Print(animationEvent)
+ 
  -- Check if there is no unformatted text and bail.
  if (outputString == nil) then
   return;
  end
 
+	outputString = string.gsub(outputString, "-%%a", "\124cffff0000\124h-\124h\124r%%a");
+	
+	if (animationEvent.DamageType ~= nil) then
+		if animationEvent.DamageType == SPELL_SCHOOL1_CAP then
+			outputString = string.gsub(outputString, "%%a", "\124cffF6F99E\124h%%a\124h\124r");
+		elseif animationEvent.DamageType == SPELL_SCHOOL2_CAP then
+			outputString = string.gsub(outputString, "%%a", "\124cffFF8080\124h%%a\124h\124r");
+		elseif animationEvent.DamageType == SPELL_SCHOOL3_CAP then
+			outputString = string.gsub(outputString, "%%a", "\124cff80FF80\124h%%a\124h\124r");
+		elseif animationEvent.DamageType == SPELL_SCHOOL4_CAP then
+			outputString = string.gsub(outputString, "%%a", "\124cff8080FF\124h%%a\124h\124r");
+		elseif animationEvent.DamageType == SPELL_SCHOOL5_CAP then
+			outputString = string.gsub(outputString, "%%a", "\124cffA000A0\124h%%a\124h\124r");
+		elseif animationEvent.DamageType == SPELL_SCHOOL6_CAP then
+			outputString = string.gsub(outputString, "%%a", "\124cffFFB9FF\124h%%a\124h\124r");
+		elseif animationEvent.DamageType == SPELL_SCHOOL0_CAP and animationEvent.EffectName and animationEvent.ScrollArea.AssociatedFrame == "MSBTFrameOutgoing" then
+			outputString = string.gsub(outputString, "%%a", "\124cffFFFF00\124h%%a\124h\124r");
+		elseif animationEvent.DamageType == SPELL_SCHOOL0_CAP then
+			outputString = string.gsub(outputString, "%%a", "\124cffFFFFFF\124h%%a\124h\124r");
+		elseif animationEvent.DamageType == "Inconnu" then
+			outputString = string.gsub(outputString, "%%a", "\124cffFFB9FF\124h%%a\124h\124r");
+			-- DEFAULT_CHAT_FRAME:AddMessage(animationEvent.DamageType)
+		end
+	end
+ 
  -- Substitute amount.
  if (animationEvent.Amount ~= nil) then
   -- Check if there is overheal info 
@@ -934,8 +1062,11 @@ function MikSBT.FormatEventText(animationEvent)
  end
 
  -- Substitute enemy/player names.
- if (animationEvent.Name ~= nil) then
+ if (animationEvent.Name ~= nil) and (animationEvent.Name ~= UnitName("player")) then
   outputString = string.gsub(outputString, "%%n", animationEvent.Name);
+  else
+  outputString = string.gsub(outputString, "%(%%n%)", "");
+  outputString = string.gsub(outputString, "%%n", "");
  end
 
  -- Substitute effect names.
@@ -1376,10 +1507,14 @@ function MikSBT.AddAnimation(animationEvent)
  -- Loop through all of the suppression entries and look for a match.
  for _, suppressionSettings in MikSBT.CurrentProfile.Suppressions do
   -- Check if the suppression's search pattern is a match.
-  if (suppressionSettings.Enabled and string.find(animationEvent.Text, suppressionSettings.SearchPattern)) then
+  if (suppressionSettings.Enabled and (string.find(animationEvent.Text, suppressionSettings.SearchPattern))) then
    -- Reclaim the animation event table to the events recycler and leave the function.
    eventsRecycler:ReclaimTable(animationEvent);
-   return; 
+   return;
+  elseif (suppressionSettings.Enabled and animationEvent.EffectName and string.find(animationEvent.EffectName, suppressionSettings.SearchPattern)) then
+   -- Reclaim the animation event table to the events recycler and leave the function.
+   eventsRecycler:ReclaimTable(animationEvent);
+   return;
   end
  end
 
@@ -1389,6 +1524,30 @@ function MikSBT.AddAnimation(animationEvent)
   animationEvent.IsSticky = true;
  end
 
+ -- Color UnitName by class
+ local UnitID = MikCEH.GetUnitIDFromName(animationEvent.Name)
+ if UnitID then
+	local Class = UnitClass(UnitID)
+	if Class and Class == "Paladin" then
+		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffF58CBA|h"..animationEvent.Name.."|h|r")
+	elseif Class and Class == "Druide" then
+		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffFF7D0A|h"..animationEvent.Name.."|h|r")
+	elseif Class and Class == "Chasseur" then
+		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffABD473|h"..animationEvent.Name.."|h|r")
+	elseif Class and Class == "Mage" then
+		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cff69CCF0|h"..animationEvent.Name.."|h|r")
+	elseif Class and Class == "Prêtre" then
+		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffFFFFFF|h"..animationEvent.Name.."|h|r")
+	elseif Class and Class == "Voleur" then
+		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffFFF569|h"..animationEvent.Name.."|h|r")
+	elseif Class and Class == "Chaman" then
+		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cff0070DE|h"..animationEvent.Name.."|h|r")
+	elseif Class and Class == "Démoniste" then
+		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cff9482C9|h"..animationEvent.Name.."|h|r")
+	elseif Class and Class == "Guerrier" then
+		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffC79C6E|h"..animationEvent.Name.."|h|r")
+	end
+ end
 
  -- Get the next available animation display info object for the scroll area.
  local animDisplayInfo = MikSBT.GetNextAnimationDisplayInfo(animationEvent);
@@ -1447,7 +1606,62 @@ function MikSBT.AddAnimation(animationEvent)
  animDisplayInfo.FontObject:SetText(animationEvent.Text);
  animDisplayInfo.FontObject:SetAlpha(animDisplayInfo.Alpha);
  animDisplayInfo.FontObject:SetPoint(animDisplayInfo.AnchorPoint, animDisplayInfo.PositionX, animDisplayInfo.PositionY);
-
+ 
+ -- Athene Edit - Spell Icon
+ local texture
+ if animationEvent.Texture then texture = animationEvent.Texture end
+ if animationEvent.EffectName then
+	 local name = string.gsub(animationEvent.EffectName, " %(%d+%)", "")
+	 -- DEFAULT_CHAT_FRAME:AddMessage(animationEvent.EffectName)
+	 -- DEFAULT_CHAT_FRAME:AddMessage(name)
+	 -- texture = BS:GetSpellIcon(name)
+	 if ICON_CACHE[strlower(name)] then
+		texture = ICON_CACHE[strlower(name)]
+	 elseif not texture and MikSBT.FindBuff(name) then
+		local bufftype,index,_ = MikSBT.FindBuff(name)
+		local icon
+		if bufftype == "buff" then
+			icon = UnitBuff("player", index)
+			ICON_CACHE[strlower(name)] = icon
+			texture = icon
+		elseif bufftype == "debuff" then
+			icon = UnitDebuff("player", index)
+			ICON_CACHE[strlower(name)] = icon
+			texture = icon
+		else
+			texture = nil
+			NO_ICON_CACHE[strlower(name)] = 1
+		end
+	 elseif not texture and BS:GetSpellIcon(name) then
+		texture = BS:GetSpellIcon(name)
+	 elseif not texture and MikSBT.FindItemIcon(name) then
+		texture = MikSBT.FindItemIcon(name)
+		ICON_CACHE[strlower(name)] = MikSBT.FindItemIcon(name)
+	 elseif not texture then
+		texture = nil
+		NO_ICON_CACHE[strlower(name)] = 1
+	 end
+ end
+ 
+ if texture then
+  -- local frame
+  if not animDisplayInfo.Texture then
+	-- on creer une nouvelle texture
+	animDisplayInfo.Texture = getglobal(animationEvent.ScrollArea.AssociatedFrame):CreateTexture(nil, "ARTWORK")
+  end
+	-- on réutilise une texture existante
+  animDisplayInfo.Texture:ClearAllPoints();
+  animDisplayInfo.Texture:SetTexture(nil);
+  animDisplayInfo.Texture:SetTexture(texture);
+  animDisplayInfo.Texture:SetWidth(animDisplayInfo.FontSize);
+  animDisplayInfo.Texture:SetHeight(animDisplayInfo.FontSize);
+  animDisplayInfo.Texture:SetTexCoord(0.125, 0.875, 0.125, 0.875)
+  animDisplayInfo.Texture:SetPoint("RIGHT", animDisplayInfo.FontObject, "LEFT", -4, 0);
+  animDisplayInfo.Texture:SetDrawLayer(animDisplayInfo.IsSticky and "OVERLAY" or animDisplayInfo.IsCrit and "OVERLAY" or "ARTWORK");
+ elseif animDisplayInfo.Texture then
+	animDisplayInfo.Texture:SetTexture(nil);
+ end
+ 
 
  -- Set the last update to the current time.
  animDisplayInfo.LastUpdated = GetTime();
@@ -1475,6 +1689,116 @@ function MikSBT.AddAnimation(animationEvent)
  eventsRecycler:ReclaimTable(animationEvent);
 end
 
+-- **********************************************************************************
+-- This function return the buff texture based on
+-- it's name.
+-- **********************************************************************************
+function ItemLinkToName(link)
+	return gsub(link,"^.*%[(.*)%].*$","%1");
+end
+
+function MikSBT.FindItemIcon(item)
+	if ( not item ) then return; end
+	item = string.lower(item);
+	local link;
+	for i = 1,23 do
+		link = GetInventoryItemLink("player",i);
+		if ( link ) then
+			if ( item == string.lower(ItemLinkToName(link)) )then
+				return i, nil, GetInventoryItemTexture('player', i), GetInventoryItemCount('player', i);
+			end
+		end
+	end
+	local count, bag, slot, texture;
+	for i = 0,NUM_BAG_FRAMES do
+		for j = 1,MAX_CONTAINER_ITEMS do
+			link = GetContainerItemLink(i,j);
+			if ( link ) then
+				if ( item == string.lower(ItemLinkToName(link))) then
+					bag, slot = i, j;
+					texture, count = GetContainerItemInfo(i,j);
+				end
+			end
+		end
+	end
+	return texture;
+end
+
+-- **********************************************************************************
+-- This function return the buff texture based on
+-- it's name.
+-- **********************************************************************************
+function MikSBT.FindBuff( obuff, unit, item)
+	local buff=strlower(obuff);
+	local tooltip=MSBT_Tooltip;
+	local textleft1=getglobal(tooltip:GetName().."TextLeft1");
+	if ( not unit ) then
+		unit ='player';
+	end
+	local my, me, mc, oy, oe, oc = GetWeaponEnchantInfo();
+	if ( my ) then
+		tooltip:SetOwner(UIParent, "ANCHOR_NONE");
+		tooltip:SetInventoryItem( unit, 16);
+		for i=1, 23 do
+			local text = getglobal("MSBT_TooltipTextLeft"..i):GetText();
+			if ( not text ) then
+				break;
+			elseif (text and strlower(text) == buff) then
+				tooltip:Hide();
+				return "main",me, mc;
+			end
+		end
+		tooltip:Hide();
+	elseif ( oy ) then
+		tooltip:SetOwner(UIParent, "ANCHOR_NONE");
+		tooltip:SetInventoryItem( unit, 17);
+		for i=1, 23 do
+			local text = getglobal("MSBT_TooltipTextLeft"..i):GetText();
+			if ( not text ) then
+				break;
+			elseif (text and strlower(text) == buff) then
+				tooltip:Hide();
+				return "off", oe, oc;
+			end
+		end
+		tooltip:Hide();
+	end
+	if ( item ) then return end
+	tooltip:SetOwner(UIParent, "ANCHOR_NONE");
+	tooltip:SetTrackingSpell();
+	local b = textleft1:GetText();
+	if ( b and strlower(b) == buff ) then
+		tooltip:Hide();
+		return "track",b;
+	end
+	local c=nil;
+	for i=1, 32 do
+		tooltip:SetOwner(UIParent, "ANCHOR_NONE");
+		tooltip:SetUnitBuff(unit, i);
+		b = textleft1:GetText();
+		tooltip:Hide();
+		if ( b and strlower(b) == buff ) then
+			return "buff", i, b;
+		elseif ( c==b ) then
+			break;
+		end
+		--c = b;
+	end
+	c=nil;
+	for i=1, 16 do
+		tooltip:SetOwner(UIParent, "ANCHOR_NONE");
+		tooltip:SetUnitDebuff(unit, i);
+		b = textleft1:GetText();
+		tooltip:Hide();
+		if ( b and strlower(b) == buff ) then
+			return "debuff", i, b;
+		elseif ( c==b) then
+			break;
+		end
+		--c = b;
+	end
+	tooltip:Hide();
+end
 
 -- **********************************************************************************
 -- This function gets the next animation display info object for the correct
@@ -1769,18 +2093,55 @@ function MikSBT.DoAnimation(animDisplayInfo, scrollArea)
    local textDelta = animDisplayInfo.FontSize * (1 - (elapsedTime / STICKY_FADE_IN_TIME));
    animDisplayInfo.FontObject:SetTextHeight(animDisplayInfo.FontSize + textDelta);
    animDisplayInfo.FontObject:SetAlpha(1);
+   if animDisplayInfo.Texture then
+	animDisplayInfo.Texture:SetAlpha(1);
+	animDisplayInfo.Texture:SetWidth(animDisplayInfo.FontSize + textDelta);
+    animDisplayInfo.Texture:SetHeight(animDisplayInfo.FontSize + textDelta);
+  end
    return;
   elseif (elapsedTime <= (STICKY_DISPLAY_TIME + STICKY_FADE_IN_TIME)) then
    animDisplayInfo.FontObject:SetTextHeight(animDisplayInfo.FontSize);
+   if animDisplayInfo.Texture then
+	animDisplayInfo.Texture:SetWidth(animDisplayInfo.FontSize);
+    animDisplayInfo.Texture:SetHeight(animDisplayInfo.FontSize);
+  end
+     if animDisplayInfo.IsCrit then
+	  if not animDisplayInfo.timeLastJiggled then
+			animDisplayInfo.originalPositionX = animDisplayInfo.PositionX
+			animDisplayInfo.originalPositionY = animDisplayInfo.PositionY
+			animDisplayInfo.DecalageX = 0
+			animDisplayInfo.DecalageY = 0
+			animDisplayInfo.timeLastJiggled = 0
+	   end
+	   if animDisplayInfo.PositionY ~= (animDisplayInfo.originalPositionY + animDisplayInfo.DecalageY) then
+			animDisplayInfo.originalPositionX = animDisplayInfo.PositionX
+			animDisplayInfo.originalPositionY = animDisplayInfo.PositionY
+	   end
+	   if (elapsedTime - animDisplayInfo.timeLastJiggled > 0.05) then
+	   animDisplayInfo.DecalageX = math.ceil(math.random(-1, 1));
+	   animDisplayInfo.DecalageY = math.ceil(math.random(-1, 1));
+	   animDisplayInfo.PositionX = animDisplayInfo.originalPositionX + animDisplayInfo.DecalageX;
+	   animDisplayInfo.PositionY = animDisplayInfo.originalPositionY + animDisplayInfo.DecalageY;
+	   animDisplayInfo.timeLastJiggled = elapsedTime;
+	   animDisplayInfo.FontObject:SetPoint(animDisplayInfo.AnchorPoint, animDisplayInfo.PositionX, animDisplayInfo.PositionY);
+	  end
+  end
    return;
   elseif (elapsedTime <= (STICKY_DISPLAY_TIME + STICKY_FADE_IN_TIME + STICKY_FADE_OUT_TIME)) then
    local alpha = 1 - ((elapsedTime - STICKY_DISPLAY_TIME - STICKY_FADE_IN_TIME) / STICKY_FADE_OUT_TIME);
+   animDisplayInfo.timeLastJiggled = nil
    animDisplayInfo.FontObject:SetAlpha(alpha);
+   if animDisplayInfo.Texture then
+	animDisplayInfo.Texture:SetAlpha(alpha);
+  end
    return;
   end
 
   -- Deactivate the animation.
   animDisplayInfo.FontObject:SetAlpha(0);
+  if animDisplayInfo.Texture then
+	animDisplayInfo.Texture:SetAlpha(0);
+  end
   animDisplayInfo.IsActive = false;
 
   return;
@@ -1797,6 +2158,9 @@ function MikSBT.DoAnimation(animDisplayInfo, scrollArea)
   if (animationComplete) then
    -- Set the font object's alpha.
    animDisplayInfo.FontObject:SetAlpha(0);
+   if animDisplayInfo.Texture then
+	animDisplayInfo.Texture:SetAlpha(0);
+   end
 
    -- Deactive the animation.
    animDisplayInfo.IsActive = false;
@@ -1804,6 +2168,9 @@ function MikSBT.DoAnimation(animDisplayInfo, scrollArea)
    -- Move the font object and set its alpha.
    animDisplayInfo.FontObject:SetPoint(animDisplayInfo.AnchorPoint, animDisplayInfo.PositionX, animDisplayInfo.PositionY);
    animDisplayInfo.FontObject:SetAlpha(animDisplayInfo.Alpha);
+   if animDisplayInfo.Texture then
+	animDisplayInfo.Texture:SetAlpha(animDisplayInfo.Alpha);
+   end
   end
 
   -- Set the last update to the current time.
@@ -2151,7 +2518,7 @@ end
 -- Displays the passed message in the passed scroll area with the passed parameters.
 -- This function is for easy displaying of messages from external sources.
 -- **********************************************************************************
-function MikSBT.DisplayMessage(message, displayType, isSticky, colorR, colorG, colorB, fontSize, fontIndex, outlineIndex)
+function MikSBT.DisplayMessage(message, displayType, isSticky, colorR, colorG, colorB, fontSize, fontIndex, outlineIndex, Texture)
  -- Check if no message was passed and do nothing.
  if (message == nil) then
   return;
@@ -2235,6 +2602,7 @@ function MikSBT.DisplayMessage(message, displayType, isSticky, colorR, colorG, c
  animationEvent.ColorR = colorR;
  animationEvent.ColorG = colorG;
  animationEvent.ColorB = colorB;
+ animationEvent.Texture = Texture;
 
 
  -- Add the event to the animation system.

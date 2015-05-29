@@ -11,6 +11,15 @@
   </Scripts>
  </Frame>
 
+ <!-- Tooltip -->
+ <GameTooltip name="MSBT_Tooltip" frameStrata="TOOLTIP" hidden="true" parent="UIParent" inherits="GameTooltipTemplate">
+		<Scripts>
+			<OnLoad>
+		this:SetOwner(WorldFrame, "ANCHOR_NONE");
+			</OnLoad>
+		</Scripts>
+ </GameTooltip>
+ 
  <!-- Incoming Scroll Area -->
  <Frame name="MSBTFrameIncoming" toplevel="true" enableMouse="false" parent="UIParent" frameStrata="HIGH" hidden="true">
   <Size>
@@ -29,91 +38,101 @@
      <Anchors>
       <Anchor point="BOTTOMRIGHT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText2" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMRIGHT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText3" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMRIGHT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText4" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMRIGHT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText5" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMRIGHT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText6" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMRIGHT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText7" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMRIGHT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText8" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMRIGHT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText9" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMRIGHT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText10" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMRIGHT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText11" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMRIGHT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText12" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMRIGHT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText13" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMRIGHT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText14" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMRIGHT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText15" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMRIGHT" />
      </Anchors>
-     <Shadow />
+    </FontString>
+	<FontString name="$parentText16" inherits="MasterFont">
+     <Anchors>
+      <Anchor point="BOTTOMRIGHT" />
+     </Anchors>
+    </FontString>
+	<FontString name="$parentText17" inherits="MasterFont">
+     <Anchors>
+      <Anchor point="BOTTOMRIGHT" />
+     </Anchors>
+    </FontString>
+	<FontString name="$parentText18" inherits="MasterFont">
+     <Anchors>
+      <Anchor point="BOTTOMRIGHT" />
+     </Anchors>
+    </FontString>
+	<FontString name="$parentText19" inherits="MasterFont">
+     <Anchors>
+      <Anchor point="BOTTOMRIGHT" />
+     </Anchors>
+    </FontString>
+	<FontString name="$parentText20" inherits="MasterFont">
+     <Anchors>
+      <Anchor point="BOTTOMRIGHT" />
+     </Anchors>
     </FontString>
    </Layer>
   </Layers>
@@ -140,91 +159,101 @@
      <Anchors>
       <Anchor point="BOTTOM" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText2" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOM" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText3" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOM" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText4" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOM" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText5" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOM" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText6" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOM" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText7" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOM" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText8" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOM" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText9" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOM" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText10" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOM" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText11" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOM" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText12" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOM" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText13" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOM" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText14" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOM" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText15" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOM" />
      </Anchors>
-     <Shadow />
+    </FontString>
+	<FontString name="$parentText16" inherits="MasterFont">
+     <Anchors>
+      <Anchor point="BOTTOM" />
+     </Anchors>
+    </FontString>
+	<FontString name="$parentText17" inherits="MasterFont">
+     <Anchors>
+      <Anchor point="BOTTOM" />
+     </Anchors>
+    </FontString>
+	<FontString name="$parentText18" inherits="MasterFont">
+     <Anchors>
+      <Anchor point="BOTTOM" />
+     </Anchors>
+    </FontString>
+	<FontString name="$parentText19" inherits="MasterFont">
+     <Anchors>
+      <Anchor point="BOTTOM" />
+     </Anchors>
+    </FontString>
+	<FontString name="$parentText20" inherits="MasterFont">
+     <Anchors>
+      <Anchor point="BOTTOM" />
+     </Anchors>
     </FontString>
    </Layer>
   </Layers>
@@ -251,91 +280,101 @@
      <Anchors>
       <Anchor point="BOTTOMLEFT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText2" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMLEFT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText3" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMLEFT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText4" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMLEFT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText5" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMLEFT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText6" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMLEFT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText7" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMLEFT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText8" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMLEFT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText9" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMLEFT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText10" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMLEFT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText11" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOM" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText12" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMLEFT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText13" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMLEFT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText14" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMLEFT" />
      </Anchors>
-     <Shadow />
     </FontString>
     <FontString name="$parentText15" inherits="MasterFont">
      <Anchors>
       <Anchor point="BOTTOMLEFT" />
      </Anchors>
-     <Shadow />
+    </FontString>
+	<FontString name="$parentText16" inherits="MasterFont">
+     <Anchors>
+      <Anchor point="BOTTOMLEFT" />
+     </Anchors>
+    </FontString>
+	<FontString name="$parentText17" inherits="MasterFont">
+     <Anchors>
+      <Anchor point="BOTTOMLEFT" />
+     </Anchors>
+    </FontString>
+	<FontString name="$parentText18" inherits="MasterFont">
+     <Anchors>
+      <Anchor point="BOTTOMLEFT" />
+     </Anchors>
+    </FontString>
+	<FontString name="$parentText19" inherits="MasterFont">
+     <Anchors>
+      <Anchor point="BOTTOMLEFT" />
+     </Anchors>
+    </FontString>
+	<FontString name="$parentText20" inherits="MasterFont">
+     <Anchors>
+      <Anchor point="BOTTOMLEFT" />
+     </Anchors>
     </FontString>
    </Layer>
   </Layers>

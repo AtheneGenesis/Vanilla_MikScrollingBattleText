@@ -1,6 +1,7 @@
 -------------------------------------------------------------------------------------
 -- Title: Mik's Table Recyler Object
 -- Author: Mik
+-- Maintainer: Athene
 -- Credits:
 --  Thanks to tekkub, the author of compostLib.  I adapted much of his code for
 --  this object.

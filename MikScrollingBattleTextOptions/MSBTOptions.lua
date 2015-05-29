@@ -1,6 +1,7 @@
 -------------------------------------------------------------------------------------
 -- Title: Mik's Scrolling Battle Text Options
 -- Author: Mik
+-- Maintainer: Athene
 -------------------------------------------------------------------------------------
 
 -------------------------------------------------------------------------------------
@@ -34,7 +35,7 @@ local MAX_ANIMATION_STEP = 5;
 
 -- The min and max scroll heights.
 local MIN_SCROLL_HEIGHT = 100;
-local MAX_SCROLL_HEIGHT = 300;
+local MAX_SCROLL_HEIGHT = 600;
 
 -- The size of an event settings line and number of event items per page.
 local EVENT_ITEM_HEIGHT = 25;
@@ -821,7 +822,7 @@ end
 function MikSBTOpt.InitSliders()
  -- Initialize the Animation Step slider.
  local key = "Tab1FrameAnimationStepSlider"; 
- MikSBTOpt.SetupSlider(OPTIONS_FRAME_NAME .. key, MikSBTOpt.SLIDERS[key].Label, MikSBTOpt.SLIDERS[key].Tooltip, MIN_ANIMATION_STEP, MAX_ANIMATION_STEP, 1, "AnimationStep");
+ MikSBTOpt.SetupSlider(OPTIONS_FRAME_NAME .. key, MikSBTOpt.SLIDERS[key].Label, MikSBTOpt.SLIDERS[key].Tooltip, MIN_ANIMATION_STEP, MAX_ANIMATION_STEP, 0.5, "AnimationStep");
 
  -- Initialize the scroll height slider.
  key = "ScrollHeightSlider";
@@ -1332,6 +1333,8 @@ function MikSBTOpt.InitEditboxes()
  key = "XOffsetEditbox";	MikSBTOpt.SetupEditbox(SCROLL_AREA_MOVER_CONTROL_FRAME_NAME .. key, MikSBTOpt.EDITBOXES[key].Label, MikSBTOpt.EDITBOXES[key].Tooltip, nil);
  key = "YOffsetEditbox";	MikSBTOpt.SetupEditbox(SCROLL_AREA_MOVER_CONTROL_FRAME_NAME .. key, MikSBTOpt.EDITBOXES[key].Label, MikSBTOpt.EDITBOXES[key].Tooltip, nil);
 
+ key = "IconNameEditbox";	MikSBTOpt.SetupEditbox(TRIGGER_CONFIGURATION_FRAME_NAME .. key, MikSBTOpt.EDITBOXES[key].Label, MikSBTOpt.EDITBOXES[key].Tooltip, nil);
+ 
  key = "SearchPattern1Editbox";	MikSBTOpt.SetupEditbox(TRIGGER_CONFIGURATION_FRAME_NAME .. key, MikSBTOpt.EDITBOXES[key].Label, MikSBTOpt.EDITBOXES[key].Tooltip, nil);
  key = "SearchPattern2Editbox";	MikSBTOpt.SetupEditbox(TRIGGER_CONFIGURATION_FRAME_NAME .. key, MikSBTOpt.EDITBOXES[key].Label, MikSBTOpt.EDITBOXES[key].Tooltip, nil);
 end
@@ -3107,7 +3110,7 @@ function MikSBTOpt.SetupAvailableTriggerEvents()
  table.insert(availableTriggerEvents, "CHAT_MSG_COMBAT_CREATURE_VS_SELF_MISSES");
  table.insert(availableTriggerEvents, "CHAT_MSG_COMBAT_HOSTILEPLAYER_MISSES");
  table.insert(availableTriggerEvents, "CHAT_MSG_COMBAT_PARTY_MISSES");
- table.insert(availableTriggerEvents, "CHAT_MSG_SPELL_CREATURE_VS_SELF_DAMAGE");
+ table.insert(availableTriggerEvents, "CHAT_MSG_SPELL_CREATURE_VS_SELF_DAMAGE");  -- athenne add
  table.insert(availableTriggerEvents, "CHAT_MSG_SPELL_HOSTILEPLAYER_DAMAGE");
  table.insert(availableTriggerEvents, "CHAT_MSG_SPELL_PARTY_DAMAGE");
  table.insert(availableTriggerEvents, "CHAT_MSG_SPELL_DAMAGESHIELDS_ON_OTHERS");
@@ -3134,6 +3137,7 @@ function MikSBTOpt.SetupAvailableTriggerEvents()
  table.insert(availableTriggerEvents, "CHAT_MSG_SKILL");
  table.insert(availableTriggerEvents, "CHAT_MSG_COMBAT_XP_GAIN");
  table.insert(availableTriggerEvents, "CHAT_MSG_COMBAT_HOSTILE_DEATH");
+ table.insert(availableTriggerEvents, "CHAT_MSG_SPELL_CREATURE_VS_CREATURE_DAMAGE");
 end
 
 
@@ -3235,6 +3239,15 @@ function MikSBTOpt.ShowTriggerConfig(triggerKey)
   -- Populate the trigger type.
   MikSBTOpt.PopulateDropdown(TRIGGER_CONFIGURATION_FRAME_NAME .. "TriggerTypeDropdown", triggerData.TriggerSettings.TriggerType);
 
+   -- Holds the Icon Texture.
+   local texture = ""; 
+
+   -- Check if there is a texture defined.
+   if (triggerData.Texture) then
+    texture = triggerData.Texture or "";
+   end
+  
+  MikSBTOpt.PopulateEditbox(TRIGGER_CONFIGURATION_FRAME_NAME .. "IconNameEditbox", texture);
   -- Setup the trigger controls appropriately depending on the trigger type.
   MikSBTOpt.SetupVariableTriggerControls(triggerKey, triggerData.TriggerSettings.TriggerType == MikCEH.TRIGGERTYPE_SEARCH_PATTERN);
 
@@ -3272,6 +3285,8 @@ function MikSBTOpt.SetupVariableTriggerControls(triggerKey, showSearch)
 
    getglobal(TRIGGER_CONFIGURATION_FRAME_NAME .. "SearchPattern1Editbox"):Show();
    getglobal(TRIGGER_CONFIGURATION_FRAME_NAME .. "SearchPattern2Editbox"):Show();
+   
+   getglobal(TRIGGER_CONFIGURATION_FRAME_NAME .. "TextureHorizontalBarBottom"):Show();
 
    -- Clear the selected trigger events.
    if (not triggerFrame.SelectedTriggerEvents) then
@@ -3318,6 +3333,8 @@ function MikSBTOpt.SetupVariableTriggerControls(triggerKey, showSearch)
    getglobal(TRIGGER_CONFIGURATION_FRAME_NAME .. "TriggerEvent4Checkbox"):Hide();
    getglobal(TRIGGER_CONFIGURATION_FRAME_NAME .. "SearchPattern1Editbox"):Hide();
    getglobal(TRIGGER_CONFIGURATION_FRAME_NAME .. "SearchPattern2Editbox"):Hide();
+   
+   getglobal(TRIGGER_CONFIGURATION_FRAME_NAME .. "TextureHorizontalBarBottom"):Hide();
 
    -- Populate the threshold slider.
    MikSBTOpt.PopulateSlider(TRIGGER_CONFIGURATION_FRAME_NAME .. "ThresholdSlider", triggerData.TriggerSettings.Threshold or 1);
@@ -3396,7 +3413,12 @@ function MikSBTOpt.SaveTriggerConfig()
   -- Save the trigger type.
   triggerData.TriggerSettings.TriggerType = UIDropDownMenu_GetSelectedValue(getglobal(TRIGGER_CONFIGURATION_FRAME_NAME .. "TriggerTypeDropdown"));
 
-
+  -- Save the Icon Name
+  local texture = getglobal(TRIGGER_CONFIGURATION_FRAME_NAME .. "IconNameEditbox"):GetText();
+   if (texture) and (texture ~= "") then
+    triggerData.Texture = texture;
+   end
+  
   -- Check if the trigger type is search pattern.
   if (triggerData.TriggerSettings.TriggerType == MikCEH.TRIGGERTYPE_SEARCH_PATTERN) then
    -- Clear the threshold field.
