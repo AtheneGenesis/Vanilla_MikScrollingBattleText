@@ -151,6 +151,7 @@ local searchPatternTriggers = {};
 -- Holds previous health and mana values.
 local lastSelfHealthPercentage = 0;
 local lastSelfManaPercentage = 0;
+local lastSelfManaAmount = UnitMana("player");
 local lastPetHealthPercentage = 0;
 local lastEnemyHealthPercentage = 0;
 local lastFriendlyHealthPercentage = 0;
@@ -3450,7 +3451,9 @@ function MikCEH.ParseSelfHealthTriggers()
    -- Get trigger event data and call the trigger handler.
    local eventData = MikCEH.GetThresholdTriggerEventData(triggerKey, healthAmount);
    MikCEH.SendTriggerEvent(eventData);
-   PlaySoundFile("Interface\\AddOns\\MikScrollingBattleText\\sounds\\LowHealth.mp3");
+   if MikSBT.CurrentProfile.LowHealthSound then
+	PlaySoundFile("Interface\\AddOns\\MikScrollingBattleText\\sounds\\LowHealth.mp3");
+   end
   end
  end
 
@@ -3467,7 +3470,14 @@ function MikCEH.ParseSelfManaTriggers()
  if (UnitPowerType("player") == 0) then
   local manaAmount = UnitMana("player");
   local manaPercentage = manaAmount / UnitManaMax("player");
-
+  
+  -- Mana per Five Ticks
+  local manaDiff = manaAmount - lastSelfManaAmount;
+	if ( manaDiff > 0 and MikSBT.CurrentProfile.ShowAllManaGains) then
+		local eventData = MikCEH.GetNotificationEventData(MikCEH.NOTIFICATIONTYPE_POWER_GAIN, manaDiff.." "..MANA, 0);
+		MikCEH.SendEvent(eventData);
+	end
+  
   -- Loop through self mana triggers.
   for triggerKey, triggerSettings in selfManaTriggers do
    -- Check if we just crossed the trigger's threshold.
@@ -3475,12 +3485,15 @@ function MikCEH.ParseSelfManaTriggers()
     -- Get trigger event data and call the trigger handler.
     local eventData = MikCEH.GetThresholdTriggerEventData(triggerKey, manaAmount);
     MikCEH.SendTriggerEvent(eventData);
-	PlaySoundFile("Interface\\AddOns\\MikScrollingBattleText\\sounds\\LowMana.mp3");
+	if MikSBT.CurrentProfile.LowManaSound then
+	   PlaySoundFile("Interface\\AddOns\\MikScrollingBattleText\\sounds\\LowMana.mp3");
+	end
    end
   end
 
   -- Update the last mana percentage.
   lastSelfManaPercentage = manaPercentage;
+  lastSelfManaAmount = manaAmount;
  end
 end
 

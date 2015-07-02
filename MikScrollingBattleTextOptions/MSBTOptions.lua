@@ -598,6 +598,17 @@ function MikSBTOpt.InitCheckboxes()
  key = "Tab1FrameShowGameDamageCheckbox";
  MikSBTOpt.SetupCheckbox(OPTIONS_FRAME_NAME .. key, MikSBTOpt.CHECKBOXES[key].Label, MikSBTOpt.CHECKBOXES[key].Tooltip, "ShowGameDamage");
 
+ -- Initialize the Show All Mana Gains checkbox.
+ key = "Tab1FrameShowAllManaGainsCheckbox";
+ MikSBTOpt.SetupCheckbox(OPTIONS_FRAME_NAME .. key, MikSBTOpt.CHECKBOXES[key].Label, MikSBTOpt.CHECKBOXES[key].Tooltip, "ShowAllManaGains");
+ 
+  -- Initialize the Low Health Sound checkbox.
+ key = "Tab1FrameLowHealthSoundCheckbox";
+ MikSBTOpt.SetupCheckbox(OPTIONS_FRAME_NAME .. key, MikSBTOpt.CHECKBOXES[key].Label, MikSBTOpt.CHECKBOXES[key].Tooltip, "LowHealthSound");
+ 
+  -- Initialize the Low Mana Sound checkbox.
+ key = "Tab1FrameLowManaSoundCheckbox";
+ MikSBTOpt.SetupCheckbox(OPTIONS_FRAME_NAME .. key, MikSBTOpt.CHECKBOXES[key].Label, MikSBTOpt.CHECKBOXES[key].Tooltip, "LowManaSound");
 
  -- Initialize the show scroll area events checkboxes.
  key = "Tab2FrameShowEventsCheckbox";	MikSBTOpt.SetupCheckbox(OPTIONS_FRAME_NAME .. key, MikSBTOpt.CHECKBOXES[key].Label, MikSBTOpt.CHECKBOXES[key].Tooltip, "DisplaySettings.Incoming.Show");
@@ -3562,6 +3573,14 @@ function MikSBTOpt.PopulateProfileOptions()
  MikSBTOpt.PopulateCheckbox(OPTIONS_FRAME_NAME .. "Tab1FrameShowGameDamageCheckbox");
  MikSBT.SetOptionShowGameDamage(MikSBT.CurrentProfile.ShowGameDamage);
 
+  -- Populate the Show All Mana Gains checkbox.
+ MikSBTOpt.PopulateCheckbox(OPTIONS_FRAME_NAME .. "Tab1FrameShowAllManaGainsCheckbox");
+ 
+  -- Populate the Low Health Sound checkbox.
+ MikSBTOpt.PopulateCheckbox(OPTIONS_FRAME_NAME .. "Tab1FrameLowHealthSoundCheckbox");
+ 
+  -- Populate the Low Mana Sound checkbox.
+ MikSBTOpt.PopulateCheckbox(OPTIONS_FRAME_NAME .. "Tab1FrameLowManaSoundCheckbox");
 
  -- Populate the scroll area show events checkboxes to the values in the profile.
  MikSBTOpt.PopulateCheckbox(OPTIONS_FRAME_NAME .. "Tab2FrameShowEventsCheckbox");

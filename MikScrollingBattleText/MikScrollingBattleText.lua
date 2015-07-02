@@ -1217,6 +1217,16 @@ function MikSBT.UpdateProfiles()
    profile.CreationVersion = 3.0;
   end
 
+  -- Check if the profile was created prior to version 4.0.
+  if (profile.CreationVersion < 4.0) then
+  
+   profile.ShowAllManaGains = false;
+   profile.LowHealthSound = true;
+   profile.LowManaSound	 = true;
+  
+   profile.CreationVersion = 4.0;
+  end
+  
  end
 end
 
@@ -1517,6 +1527,10 @@ function MikSBT.AddAnimation(animationEvent)
    return;
   end
  end
+ 
+ if animationEvent.EventType == "MSBT_EVENTTYPE_NOTIFICATION_POWER_GAIN" and animationEvent.EffectName ~= 0 and MikSBT.CurrentProfile.ShowAllManaGains then
+	return
+ end
 
 
  -- Check if the animation event is to be displayed sticky style.
@@ -1527,24 +1541,24 @@ function MikSBT.AddAnimation(animationEvent)
  -- Color UnitName by class
  local UnitID = MikCEH.GetUnitIDFromName(animationEvent.Name)
  if UnitID then
-	local Class = UnitClass(UnitID)
-	if Class and Class == "Paladin" then
+	local _, Class = UnitClass(UnitID)
+	if Class and Class == "PALADIN" then
 		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffF58CBA|h"..animationEvent.Name.."|h|r")
-	elseif Class and Class == "Druide" then
+	elseif Class and Class == "DRUID" then
 		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffFF7D0A|h"..animationEvent.Name.."|h|r")
-	elseif Class and Class == "Chasseur" then
+	elseif Class and Class == "HUNTER" then
 		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffABD473|h"..animationEvent.Name.."|h|r")
-	elseif Class and Class == "Mage" then
+	elseif Class and Class == "MAGE" then
 		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cff69CCF0|h"..animationEvent.Name.."|h|r")
-	elseif Class and Class == "Prêtre" then
+	elseif Class and Class == "PRIEST" then
 		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffFFFFFF|h"..animationEvent.Name.."|h|r")
-	elseif Class and Class == "Voleur" then
+	elseif Class and Class == "ROGUE" then
 		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffFFF569|h"..animationEvent.Name.."|h|r")
-	elseif Class and Class == "Chaman" then
+	elseif Class and Class == "SHAMAN" then
 		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cff0070DE|h"..animationEvent.Name.."|h|r")
-	elseif Class and Class == "Démoniste" then
+	elseif Class and Class == "WARLOCK" then
 		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cff9482C9|h"..animationEvent.Name.."|h|r")
-	elseif Class and Class == "Guerrier" then
+	elseif Class and Class == "WARRIOR" then
 		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffC79C6E|h"..animationEvent.Name.."|h|r")
 	end
  end
@@ -1799,6 +1813,97 @@ function MikSBT.FindBuff( obuff, unit, item)
 	end
 	tooltip:Hide();
 end
+
+-- **********************************************************************************
+-- This function return some debug stuff
+-- for real.
+-- **********************************************************************************
+
+local depth = 0
+
+local function dump(...)
+	local out = "";
+	for i = 1, arg.n, 1 do
+		if depth > 30 then
+			out = out .. "|cffffd800... Too many things here!|r"
+			return out;
+		end
+		local d = arg[i];
+		local t = type(d);
+		if (t == "table") then
+			out = out .. "{ |cff9f9f9f--[[" .. tostring(arg[i]) .. "]]|r\n";
+			local first = true;
+			if (d) then
+				for k, v in pairs(d) do
+					if (not first) then out = out .. ", \n"; end
+					first = false;
+					depth = depth + 1
+					out = out .. "  " .. dump(k);
+					out = out .. " = ";
+					out = out .. dump(v);
+				end
+			end
+			out = out .. "\n}, |cff9f9f9f--[[" .. tostring(arg[i]) .. "]]|r\n";
+		elseif (t == "nil") then
+			out = out .. "|cffff7f7fnil|r";
+		elseif (t == "number") then
+			out = out .. "|cffff7fff" .. d .. "|r";
+		elseif (t == "string") then
+			out = out .. '"|cff7fd5ff' .. d .. '|r"';
+		elseif (t == "boolean") then
+			if (d) then
+				out = out .. "|cffff9100true|r";
+			else
+				out = out .. "|cffff9100false|r";
+			end
+		elseif (t == "function") then
+			out = out .. "|cff7fd5ff" .. tostring(d) .. "|r";
+		elseif (t == "userdata") then
+			out = out .. string.format("|cffffea00<%s:%s>|r", t, getmetatable(d) or "(anon)")
+		else
+			out = out .. string.upper(t) .. "??";
+		end
+
+		if (i < arg.n) then out = out .. ", "; end
+	end
+	return out;
+end
+
+function MikSBT.debugPrint(...)
+	local debugWin = 0;
+	local name, shown;
+	for i=1, NUM_CHAT_WINDOWS do
+		name,_,_,_,_,_,shown = GetChatWindowInfo(i);
+		if (string.lower(name) == "debug") then debugWin = i; break; end
+	end
+	if (debugWin == 0) then return end
+	local out = "";
+	depth = 0
+	for i = 1, arg.n, 1 do
+		if (i > 1) then out = out .. ", "; end
+		out = arg[i].." = "
+		arg[i] = getglobal(arg[i])
+		local t = type(arg[i]);
+		if (t == "string") then
+			out = out .. '"|cff7fd5ff'..arg[i]..'|r"';
+		elseif (t == "number") then
+			out = out .. "|cffff7fff" .. arg[i] .. "|r";
+		elseif (t == "boolean") then
+			out = out .. "|cffff9100" .. arg[i] .. "|r";
+		elseif (t == nil) then
+			out = out .. "|cffff7f7f" .. arg[i] .. "|r";
+		else
+			out = out .. dump(arg[i]);
+		end
+	end
+	local start = GetTime()
+	getglobal("ChatFrame"..debugWin):AddMessage("|cffffd800<|r\n" .. out, 1.0, 1.0, 1.0);
+	getglobal("ChatFrame"..debugWin):AddMessage("|cffffd800> displayed in:|r "..string.format( "%.4f",GetTime()-start).."|cffffd800s|r", 1.0, 1.0, 1.0);
+end
+
+SLASH_MSBTDUMPCMD1 = "/bump"
+SlashCmdList["MSBTDUMPCMD"] = MikSBT.debugPrint
+
 
 -- **********************************************************************************
 -- This function gets the next animation display info object for the correct

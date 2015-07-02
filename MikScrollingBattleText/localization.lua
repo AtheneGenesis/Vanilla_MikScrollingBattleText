@@ -12,8 +12,8 @@ MikSBT = {};
 -------------------------------------------------------------------------------
 
 MikSBT.MOD_NAME		= "MikScrollingBattleText"
-MikSBT.VERSION_NUMBER	= 3.9;
-MikSBT.VERSION_STRING	= "v3.9";
+MikSBT.VERSION_NUMBER	= 4;
+MikSBT.VERSION_STRING	= "v4.0";
 MikSBT.WINDOW_TITLE	= "Mik's Scrolling Battle Text " .. MikSBT.VERSION_STRING .. " - \124cffF58CBA\124hAthene Edit\124h\124r";
 
 MikSBT.COMMAND		= "/msbt";
@@ -161,6 +161,9 @@ MikSBT.DEFAULT_CONFIG = {
  ShowOverheals					= true,
  ShowGameDamage					= true,
  UseStickyCrits					= true,
+ ShowAllManaGains				= false,
+ LowHealthSound					= true,
+ LowManaSound					= true,
  AnimationStep					= 1.5,
  MasterFontSettings = {
   Normal 						= {FontIndex=7, OutlineIndex=2, FontSize=18},

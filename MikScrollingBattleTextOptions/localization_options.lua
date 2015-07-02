@@ -86,6 +86,9 @@ MikSBTOpt.DROPDOWNS = {
 MikSBTOpt.CHECKBOXES = {
  ["Tab1FrameDisableCheckbox"]			= { Label="Disable Mik's Scrolling Battle Text", Tooltip="Sets whether or not MSBT is disabled."},
  ["Tab1FrameShowPartialEffectsCheckbox"]	= { Label="Show Partial Effects", Tooltip="Sets whether or not to show partial resists, absorbs, blocks, etc."},
+ ["Tab1FrameShowAllManaGainsCheckbox"]	= { Label="Show All Mana Gains", Tooltip="Sets whether or not to show all mana gains: mp5, drinking, etc. |cffff0000(spammy !)"},
+ ["Tab1FrameLowHealthSoundCheckbox"]	= { Label="Low Health Sound", Tooltip="Sets whether or not to play a sound when your health is low."},
+ ["Tab1FrameLowManaSoundCheckbox"]		= { Label="Low Mana Sound", Tooltip="Sets whether or not to play a sound when your mana is low."},
  ["Tab1FrameUseStickyCritsCheckbox"]	= { Label="Display Crits Sticky", Tooltip="Sets whether or not to display crits using the sticky style."},
  ["Tab1FrameShowOverhealsCheckbox"]		= { Label="Show Overheals", Tooltip="Sets whether or not to display overhealing information."},
  ["Tab1FrameShowGameDamageCheckbox"]	= { Label="Show Game Damage", Tooltip="Sets whether or not to display the game's damage above the enemy's heads."},

@@ -2607,7 +2607,39 @@
        </Anchor>
       </Anchors>
      </CheckButton>
-
+	 
+	 <!-- All Mana Gains Checkbox -->
+     <CheckButton name="$parentShowAllManaGainsCheckbox" inherits="MSBTCheckTemplate">
+      <Anchors>
+       <Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT" relativeTo="$parentShowPartialEffectsCheckbox">
+        <Offset>
+         <AbsDimension x="0" y="10" />
+        </Offset>
+       </Anchor>
+      </Anchors>
+     </CheckButton>
+	 
+	  <!-- Low Health Sound Checkbox -->
+     <CheckButton name="$parentLowHealthSoundCheckbox" inherits="MSBTCheckTemplate">
+      <Anchors>
+       <Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentShowAllManaGainsCheckboxText">
+        <Offset>
+         <AbsDimension x="10" y="0" />
+        </Offset>
+       </Anchor>
+      </Anchors>
+     </CheckButton>
+	 
+	  <!-- Low Mana Sound Checkbox -->
+     <CheckButton name="$parentLowManaSoundCheckbox" inherits="MSBTCheckTemplate">
+      <Anchors>
+       <Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentLowHealthSoundCheckboxText">
+        <Offset>
+         <AbsDimension x="10" y="0" />
+        </Offset>
+       </Anchor>
+      </Anchors>
+     </CheckButton>
 
      <!-- Animation Step Slider -->
      <Slider name="$parentAnimationStepSlider" inherits="MSBTSliderTemplate">
