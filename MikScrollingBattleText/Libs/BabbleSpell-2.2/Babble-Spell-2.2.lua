@@ -10,7 +10,7 @@ Dependencies: AceLibrary, AceLocale-2.2
 ]]
 
 local MAJOR_VERSION = "Babble-Spell-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 15059 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 15060 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -1458,6 +1458,7 @@ BabbleSpell:RegisterTranslations("deDE", function()
 		["Gun Specialization"] = "Schusswaffenspezialisierung",
 		["Guns"] = "Schusswaffen",
 		["Hammer of Justice"] = "Hammer der Gerechtigkeit",
+		["Hand of Justice"] = "Hand der Gerechtigkeit",
 		["Hammer of Wrath"] = "Hammer des Zorns",
 		["Hamstring"] = "Kniesehne",
 		["Harass"] = "Bel\195\164stigen",
