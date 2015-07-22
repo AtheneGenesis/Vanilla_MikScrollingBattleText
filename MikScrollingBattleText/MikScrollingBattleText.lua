@@ -1145,6 +1145,11 @@ function MikSBT.UpdateProfiles()
  -- Loop through all the profiles.
  for _, profile in MikSBT_Save.Profiles do
   -- Check if the profile was created prior to version 2.0.
+  if not profile.CreationVersion then
+	-- There is an error in this Profile, we need to reset it.
+	MikSBT.ResetProfile(profile);
+  end
+  
   if (profile.CreationVersion < 2.0) then
    -- Update the profile's structure.
    profile.ShowOverheals = MikSBT.DEFAULT_CONFIG.ShowOverheals;
