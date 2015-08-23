@@ -1,6 +1,6 @@
 local L = AceLibrary("AceLocale-2.2"):new("MikScrollingBattleText")
 
-L:RegisterTranslations("enUS", function()
+L:RegisterTranslations("deDE", function()
     return {
 		["Debug mode has been enabled."] = true,
 		["Debug mode has been disabled."] = true,
@@ -8,10 +8,10 @@ L:RegisterTranslations("enUS", function()
 		["Event search mode has been disabled."] = true,
 		["The mod is now disabled."] = true,
 		["The mod is now enabled."] = true,
-		["Hits"] = true,
-		["Crit"] = true,
-		["Crits"] = true,
-		["Multiple"] = true,
+		["Hits"] = "Treffer",
+		["Crit"] = "Krit",
+		["Crits"] = "Krits",
+		["Multiple"] = "Mehrere",
 		[" (%d vulnerability)"] = true,
 		[" <\124cff00b37e\124h%d\124h\124r>"] = true,
 		["Profile Reset"] = true,
@@ -21,6 +21,6 @@ L:RegisterTranslations("enUS", function()
 		["Fire"] = true,
 		["Lava"] = true,
 		["Slime"] = true,
-        ["Hand of Justice"] = true,
+        ["Hand of Justice"] = "Hand der Gerechtigkeit",
     }
 end)

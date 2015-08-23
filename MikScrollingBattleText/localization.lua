@@ -1024,7 +1024,7 @@ MikSBT.DEFAULT_CONFIG = {
   MSBT_TRIGGER_HAND_OF_JUSTICE = {
    EventSettings = {
     Show				= true,
-    Message				= BS["Hand of Justice"].."!",
+    Message				= L["Hand of Justice"].."!",
     IsSticky			= true,
     FontSettings = {
      Color				= {r=1, g=1, b=0},
@@ -1034,7 +1034,7 @@ MikSBT.DEFAULT_CONFIG = {
    TriggerSettings = {
     TriggerType			= 6,
     TriggerEvents			= {"CHAT_MSG_SPELL_SELF_BUFF"},
-    SearchPatterns		= {string.format(SPELLEXTRAATTACKSSELF, 1, BS["Hand of Justice"])}, --"Vous gagnez %d attaques supplémentaires grâce à Main de justice"
+    SearchPatterns		= {string.format(SPELLEXTRAATTACKSSELF, 1, L["Hand of Justice"])}, --"Vous gagnez %d attaques supplémentaires grâce à Main de justice"
    },
    Texture = "Interface\\Icons\\inv_jewelry_talisman_01"
   },
