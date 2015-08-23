@@ -21,5 +21,6 @@ L:RegisterTranslations("frFR", function()
 		["Fire"] = "Feu",
 		["Lava"] = "Lave",
 		["Slime"] = "Gelée",
+        ["Hand of Justice"] = "Main de justice",
     }
 end)
