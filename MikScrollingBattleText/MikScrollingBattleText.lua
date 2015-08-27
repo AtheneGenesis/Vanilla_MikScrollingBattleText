@@ -1235,8 +1235,12 @@ function MikSBT.UpdateProfiles()
   -- Check if the profile was created prior to version 4.1.
   if (profile.CreationVersion < 4.1) then
   
-   if profile.Triggers.MSBT_TRIGGER_WINDFURY then
+   if profile.Triggers.MSBT_TRIGGER_WINDFURY then -- Fix Windfury Trigger
 	   profile.Triggers.MSBT_TRIGGER_WINDFURY.TriggerSettings.SearchPatterns[1] = string.format(AURAADDEDSELFHELPFUL, string.gsub(BS["Windfury Totem"], "-", "%%-"))
+   end
+   
+   if profile.Triggers.MSBT_TRIGGER_HAND_OF_JUSTICE then -- Delete Hand of Justice Trigger
+	   profile.Triggers["MSBT_TRIGGER_HAND_OF_JUSTICE"] = nil;
    end
    
    profile.CreationVersion = 4.1;
