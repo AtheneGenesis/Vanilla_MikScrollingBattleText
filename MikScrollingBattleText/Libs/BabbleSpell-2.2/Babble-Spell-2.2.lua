@@ -10,7 +10,7 @@ Dependencies: AceLibrary, AceLocale-2.2
 ]]
 
 local MAJOR_VERSION = "Babble-Spell-2.2"
-local MINOR_VERSION = tonumber(string.sub("$Revision: 15060 $", 12, -3))
+local MINOR_VERSION = tonumber(string.sub("$Revision: 15059 $", 12, -3))
 
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
 if not AceLibrary:HasInstance("AceLocale-2.2") then error(MAJOR_VERSION .. " requires AceLocale-2.2") end
@@ -423,7 +423,6 @@ BabbleSpell:RegisterTranslations("enUS", function()
 		["Gun Specialization"] = true,
 		["Guns"] = true,
 		["Hammer of Justice"] = true,
-		["Hand of Justice"] = true,
 		["Hammer of Wrath"] = true,
 		["Hamstring"] = true,
 		["Harass"] = true,
@@ -1458,7 +1457,6 @@ BabbleSpell:RegisterTranslations("deDE", function()
 		["Gun Specialization"] = "Schusswaffenspezialisierung",
 		["Guns"] = "Schusswaffen",
 		["Hammer of Justice"] = "Hammer der Gerechtigkeit",
-		["Hand of Justice"] = "Hand der Gerechtigkeit",
 		["Hammer of Wrath"] = "Hammer des Zorns",
 		["Hamstring"] = "Kniesehne",
 		["Harass"] = "Bel\195\164stigen",
@@ -2475,7 +2473,6 @@ BabbleSpell:RegisterTranslations("frFR", function()
 		["Gun Specialization"] = "Sp\195\169cialisation Armes \195\160 feu",
 		["Guns"] = "Armes \195\160 feu",
 		["Hammer of Justice"] = "Marteau de la justice",
-		["Hand of Justice"] = "Main de justice",
 		["Hammer of Wrath"] = "Marteau de courroux",
 		["Hamstring"] = "Brise-genou",
 		["Harass"] = "Harc\195\168lement",
@@ -2814,8 +2811,8 @@ BabbleSpell:RegisterTranslations("frFR", function()
 		["Polearm Specialization"] = "Sp\195\169cialisation Arme d'hast",
 		["Polearms"] = "Armes d'hast",
 		["Polymorph"] = "M\195\169tamorphose",
-		["Polymorph: Pig"] = "M\195\169tamorphose: cochon",
-		["Polymorph: Turtle"] = "M\195\169tamorphose: Tortue",  -- all other polymorph spells don't have a capital letter before the animal name, to test
+		["Polymorph: Pig"] = "Métamorphose : cochon",
+		["Polymorph: Turtle"] = "M\195\169tamorphose : tortue",  -- all other polymorph spells don't have a capital letter before the animal name, to test
 		["Portal: Darnassus"] = "Portail : Darnassus",
 		["Portal: Ironforge"] = "Portail : Ironforge",
 		["Portal: Orgrimmar"] = "Portail : Orgrimmar",
@@ -3491,7 +3488,6 @@ local spellIcons = {
 	["Gun Specialization"] = "INV_Musket_03",
 	["Guns"] = "INV_Weapon_Rifle_01",
 	["Hammer of Justice"] = "Spell_Holy_SealOfMight",
-	["Hand of Justice"] = "INV_Jewelry_Talisman_01",
 	["Hammer of Wrath"] = "Ability_ThunderClap",
 	["Hamstring"] = "Ability_ShockWave",
 	["Harass"] = "Ability_Hunter_Harass",

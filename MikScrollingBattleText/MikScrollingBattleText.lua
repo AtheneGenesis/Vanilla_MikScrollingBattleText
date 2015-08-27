@@ -94,8 +94,7 @@ ICON_CACHE["restauration du mana"] =			"Interface\\Icons\\inv_potion_76"
 ICON_CACHE["rune démoniaque"] =					"Interface\\Icons\\inv_misc_rune_04"
 ICON_CACHE["rune ténébreuse"] =					"Interface\\Icons\\spell_shadow_sealofkings"
 ICON_CACHE["absorption de magie"] =				"Interface\\Icons\\spell_nature_astralrecalgroup"
-ICON_CACHE["gel"] =				"Interface\\Icons\\spell_frost_glacier"
-
+ICON_CACHE["gel"] =								"Interface\\Icons\\spell_frost_glacier"
 ICON_CACHE["lésions cérébrales"] =				"Interface\\Icons\\ability_gouge"
 ICON_CACHE["décharge électrique"] =				"Interface\\Icons\\spell_lightning_lightningbolt01"
 ICON_CACHE["foudre"] =							"Interface\\Icons\\spell_lightning_lightningbolt01"
@@ -105,13 +104,13 @@ ICON_CACHE["pierre de soins mineure"] =			"Interface\\Icons\\inv_stone_04"
 ICON_CACHE["pierre de soins inférieure"] =		"Interface\\Icons\\inv_stone_04"
 ICON_CACHE["pierre de soins majeure"] =			"Interface\\Icons\\inv_stone_04"
 ICON_CACHE["pierre de soins"] =					"Interface\\Icons\\inv_stone_04"
-ICON_CACHE["capturer un esprit"] =					"Interface\\Icons\\Spell_Shadow_Haunting"
+ICON_CACHE["capturer un esprit"] =				"Interface\\Icons\\Spell_Shadow_Haunting"
 
 
 -- Cache des spells dont l'icone n'a pas été trouvée
 NO_ICON_CACHE = {}
 
--- Babble-Spell pour les icones des spells de class
+-- Babble-Spell pour les icones des spells de classe
 local BS = AceLibrary("Babble-Spell-2.2")
 
 -- Number of font strings.
@@ -1144,12 +1143,13 @@ end
 function MikSBT.UpdateProfiles()
  -- Loop through all the profiles.
  for _, profile in MikSBT_Save.Profiles do
-  -- Check if the profile was created prior to version 2.0.
+
   if not profile.CreationVersion then
 	-- There is an error in this Profile, we need to reset it.
 	MikSBT.ResetProfile(profile);
   end
   
+  -- Check if the profile was created prior to version 2.0.
   if (profile.CreationVersion < 2.0) then
    -- Update the profile's structure.
    profile.ShowOverheals = MikSBT.DEFAULT_CONFIG.ShowOverheals;
@@ -1230,6 +1230,16 @@ function MikSBT.UpdateProfiles()
    profile.LowManaSound	 = true;
   
    profile.CreationVersion = 4.0;
+  end
+  
+  -- Check if the profile was created prior to version 4.1.
+  if (profile.CreationVersion < 4.1) then
+  
+   if profile.Triggers.MSBT_TRIGGER_WINDFURY then
+	   profile.Triggers.MSBT_TRIGGER_WINDFURY.TriggerSettings.SearchPatterns[1] = string.format(AURAADDEDSELFHELPFUL, string.gsub(BS["Windfury Totem"], "-", "%%-"))
+   end
+   
+   profile.CreationVersion = 4.1;
   end
   
  end

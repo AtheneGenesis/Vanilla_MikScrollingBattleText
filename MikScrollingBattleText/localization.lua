@@ -12,8 +12,8 @@ MikSBT = {};
 -------------------------------------------------------------------------------
 
 MikSBT.MOD_NAME		= "MikScrollingBattleText"
-MikSBT.VERSION_NUMBER	= 4;
-MikSBT.VERSION_STRING	= "v4.0";
+MikSBT.VERSION_NUMBER	= 4.1;
+MikSBT.VERSION_STRING	= "v4.1";
 MikSBT.WINDOW_TITLE	= "Mik's Scrolling Battle Text " .. MikSBT.VERSION_STRING .. " - \124cffF58CBA\124hAthene Edit\124h\124r";
 
 MikSBT.COMMAND		= "/msbt";
@@ -1017,26 +1017,9 @@ MikSBT.DEFAULT_CONFIG = {
    TriggerSettings = {
     TriggerType			= 6,
     TriggerEvents			= {"CHAT_MSG_SPELL_PERIODIC_SELF_BUFFS"},
-    SearchPatterns		= {string.format(SPELLEXTRAATTACKSSELF, 1, BS["Windfury Weapon"])},  --"Vous gagnez %d attaques supplémentaires grâce à Arme Furie-des-vents"
+    SearchPatterns		= {string.format(AURAADDEDSELFHELPFUL, string.gsub(BS["Windfury Totem"], "-", "%%-"))},  --"Vous gagnez Totem Furie-des-vents" -- escape char !
    },
    Texture = "Interface\\Icons\\spell_nature_cyclone"
-  },
-  MSBT_TRIGGER_HAND_OF_JUSTICE = {
-   EventSettings = {
-    Show				= true,
-    Message				= BS["Hand of Justice"].."!",
-    IsSticky			= true,
-    FontSettings = {
-     Color				= {r=1, g=1, b=0},
-     Normal 			= {FontIndex=0, OutlineIndex=0, FontSize=26},
-    },
-   },
-   TriggerSettings = {
-    TriggerType			= 6,
-    TriggerEvents			= {"CHAT_MSG_SPELL_SELF_BUFF"},
-    SearchPatterns		= {string.format(SPELLEXTRAATTACKSSELF, 1, BS["Hand of Justice"])}, --"Vous gagnez %d attaques supplémentaires grâce à Main de justice"
-   },
-   Texture = "Interface\\Icons\\inv_jewelry_talisman_01"
   },
   MSBT_TRIGGER_NIGHTFALL = {
    EventSettings = {
