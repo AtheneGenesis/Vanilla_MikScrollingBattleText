@@ -11,6 +11,7 @@ Libs\BabbleSpell-2.2\Babble-Spell-2.2.lua
 
 MikScrollingBattleText-enUS.lua
 MikScrollingBattleText-frFR.lua
+MikScrollingBattleText-deDE.lua
 
 localization.lua
 MikTableRecyclerObject.lua
