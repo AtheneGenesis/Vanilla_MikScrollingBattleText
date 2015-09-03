@@ -12,8 +12,8 @@ MikSBT = {};
 -------------------------------------------------------------------------------
 
 MikSBT.MOD_NAME		= "MikScrollingBattleText"
-MikSBT.VERSION_NUMBER	= 4.1;
-MikSBT.VERSION_STRING	= "v4.1";
+MikSBT.VERSION_NUMBER	= 4.11;
+MikSBT.VERSION_STRING	= "v4.11";
 MikSBT.WINDOW_TITLE	= "Mik's Scrolling Battle Text " .. MikSBT.VERSION_STRING .. " - \124cffF58CBA\124hAthene Edit\124h\124r";
 
 MikSBT.COMMAND		= "/msbt";

@@ -390,13 +390,15 @@ function MikCEH.ParseCombatEvents(event, combatMessage)
   MikCEH.ParseForIncomingSpellHeals(combatMessage);
 
  -- Incoming Debuffs, DoTs, Power Gains
- elseif (event == "CHAT_MSG_SPELL_PERIODIC_SELF_DAMAGE" or
-		 event == "CHAT_MSG_SPELL_PERIODIC_PARTY_BUFFS" or
-		 event == "CHAT_MSG_SPELL_PERIODIC_FRIENDLYPLAYER_BUFFS" or
-		 event == "CHAT_MSG_SPELL_PERIODIC_CREATURE_BUFFS") then
+ elseif (event == "CHAT_MSG_SPELL_PERIODIC_SELF_DAMAGE") then
   MikCEH.ParseForIncomingDebuffs(combatMessage);
   MikCEH.ParseForPowerGains(combatMessage);
-
+  
+		 -- event == "CHAT_MSG_SPELL_PERIODIC_PARTY_BUFFS" or
+		 -- event == "CHAT_MSG_SPELL_PERIODIC_FRIENDLYPLAYER_BUFFS" or
+		 -- event == "CHAT_MSG_SPELL_PERIODIC_CREATURE_BUFFS")
+		 -- Athene: one of these may be powergains, need to check later
+  
  -- Incoming Buffs, HoTs, Power Gains
  elseif (event == "CHAT_MSG_SPELL_PERIODIC_SELF_BUFFS") then
   if (not MikCEH.ParseForIncomingSpellHeals(combatMessage)) then
@@ -2137,8 +2139,9 @@ end
 -- **********************************************************************************
 function MikCEH.ParseForOutgoingHoTs(combatMessage)
  -- Look for a HoT to someone else.
- local capturedData = MikCEH.GetCapturedData(combatMessage, "PERIODICAURAHEALSELFOTHER", {"%n", "%a", "%s"});
 
+ local capturedData = MikCEH.GetCapturedData(combatMessage, "PERIODICAURAHEALSELFOTHER", {"%n", "%a", "%s"});
+ 
  -- If a match was found.
  if (capturedData ~= nil) then
   local eventData = MikCEH.GetHealEventData(MikCEH.DIRECTIONTYPE_PLAYER_OUTGOING, MikCEH.HEALTYPE_OVER_TIME, capturedData.Amount, capturedData.SpellName, capturedData.Name);
