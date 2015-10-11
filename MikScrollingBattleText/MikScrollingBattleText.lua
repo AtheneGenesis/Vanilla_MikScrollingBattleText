@@ -1039,10 +1039,6 @@ function MikSBT.FormatEventText(animationEvent)
 			outputString = string.gsub(outputString, "%%a", "\124cffA000A0\124h%%a\124h\124r");
 		elseif animationEvent.DamageType == SPELL_SCHOOL6_CAP then
 			outputString = string.gsub(outputString, "%%a", "\124cffFFB9FF\124h%%a\124h\124r");
-		elseif animationEvent.DamageType == SPELL_SCHOOL0_CAP and animationEvent.EffectName and animationEvent.ScrollArea.AssociatedFrame == "MSBTFrameOutgoing" then
-			outputString = string.gsub(outputString, "%%a", "\124cffFFFF00\124h%%a\124h\124r");
-		elseif animationEvent.DamageType == SPELL_SCHOOL0_CAP then
-			outputString = string.gsub(outputString, "%%a", "\124cffFFFFFF\124h%%a\124h\124r");
 		elseif animationEvent.DamageType == "Inconnu" then
 			outputString = string.gsub(outputString, "%%a", "\124cffFFB9FF\124h%%a\124h\124r");
 			-- DEFAULT_CHAT_FRAME:AddMessage(animationEvent.DamageType)
