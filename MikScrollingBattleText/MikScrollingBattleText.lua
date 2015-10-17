@@ -737,8 +737,8 @@ function MikSBT.MergeEvents(mergeData, numEvents)
 
     -- If the events have an amount then total them.
     if (animationEvent.Amount ~= nil and mergeData.UnmergedEvents[x].Amount ~= nil) then
-	 animationEvent.Amount = tonumber (animationEvent.Amount, 10)
-		if animationEvent.Amount and mergeData.UnmergedEvents[x].Amount then
+	 animationEvent.Amount = tonumber(animationEvent.Amount, 10)
+		if animationEvent.Amount and type(animationEvent.Amount) == "number" and mergeData.UnmergedEvents[x].Amount then
 			animationEvent.Amount = animationEvent.Amount + mergeData.UnmergedEvents[x].Amount;
 		end
      -- animationEvent.Amount = animationEvent.Amount + mergeData.UnmergedEvents[x].Amount;
@@ -793,7 +793,7 @@ function MikSBT.MergeEvents(mergeData, numEvents)
   -- Check if there were any events merged.
   if (animationEvent.NumMerged > 0) then
    -- Create trailer text with the number of merged events.
-   local trailerText = " [" .. animationEvent.NumMerged + 1 .. " " .. MikSBT.MSG_HITS;
+   local trailerText = " [" .. 1 + animationEvent.NumMerged.. " " .. MikSBT.MSG_HITS;
 
    -- Check if there were any crits merged.
    if (animationEvent.NumCrits > 1) then

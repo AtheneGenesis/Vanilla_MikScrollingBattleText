@@ -580,11 +580,12 @@ function MikCEH.ParseForIncomingHits(combatMessage)
   return true;
  end
  
+ 
  -- Look for a normal hit on your pet
  local capturedData = MikCEH.GetCapturedData(combatMessage, "COMBATHITOTHEROTHER", {"%n", "%s", "%a"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.ACTIONTYPE_HIT, MikCEH.HITTYPE_NORMAL, MikCEH.DAMAGETYPE_PHYSICAL, capturedData.Amount, nil, capturedData.Name);
 
   -- Look for any partial actions and populate them into the event data.
@@ -601,7 +602,7 @@ function MikCEH.ParseForIncomingHits(combatMessage)
  local capturedData = MikCEH.GetCapturedData(combatMessage, "COMBATHITCRITOTHEROTHER", {"%n", "%s", "%a"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.ACTIONTYPE_HIT, MikCEH.HITTYPE_CRIT, MikCEH.DAMAGETYPE_PHYSICAL, capturedData.Amount, nil, capturedData.Name);
 
   -- Look for any partial actions and populate them into the event data.
@@ -711,7 +712,7 @@ function MikCEH.ParseForIncomingMisses(combatMessage)
  local capturedData = MikCEH.GetCapturedData(combatMessage, "MISSEDOTHEROTHER", {"%n", "%s"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.ACTIONTYPE_MISS, nil, nil, nil, nil, capturedData.Name);
 
   -- Send the event.
@@ -725,7 +726,7 @@ function MikCEH.ParseForIncomingMisses(combatMessage)
  local capturedData = MikCEH.GetCapturedData(combatMessage, "VSDODGEOTHEROTHER", {"%n", "%s"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.ACTIONTYPE_DODGE, nil, nil, nil, nil, capturedData.Name);
 
   -- Send the event.
@@ -739,7 +740,7 @@ function MikCEH.ParseForIncomingMisses(combatMessage)
  local capturedData = MikCEH.GetCapturedData(combatMessage, "VSPARRYOTHEROTHER", {"%n", "%s"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.ACTIONTYPE_PARRY, nil, nil, nil, nil, capturedData.Name);
 
   -- Send the event.
@@ -753,7 +754,7 @@ function MikCEH.ParseForIncomingMisses(combatMessage)
  local capturedData = MikCEH.GetCapturedData(combatMessage, "VSBLOCKOTHEROTHER", {"%n", "%s"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.ACTIONTYPE_BLOCK, nil, nil, nil, nil, capturedData.Name);
 
   -- Send the event.
@@ -767,7 +768,7 @@ function MikCEH.ParseForIncomingMisses(combatMessage)
  local capturedData = MikCEH.GetCapturedData(combatMessage, "VSABSORBOTHEROTHER", {"%n", "%s"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.ACTIONTYPE_ABSORB, nil, nil, nil, nil, capturedData.Name);
 
   -- Send the event.
@@ -781,7 +782,7 @@ function MikCEH.ParseForIncomingMisses(combatMessage)
  local capturedData = MikCEH.GetCapturedData(combatMessage, "VSIMMUNEOTHEROTHER", {"%n", "%s"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.ACTIONTYPE_IMMUNE, nil, nil, nil, nil, capturedData.Name);
 
   -- Send the event.
@@ -994,7 +995,7 @@ function MikCEH.ParseForIncomingSpellHitsAndMisses(combatMessage)
  local capturedData = MikCEH.GetCapturedData(combatMessage, "SPELLLOGOTHEROTHER", {"%n", "%s", "%c", "%a"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.ACTIONTYPE_HIT, MikCEH.HITTYPE_NORMAL, MikCEH.DAMAGETYPE_PHYSICAL, capturedData.Amount, capturedData.SpellName, capturedData.Name);
 
   -- Look for any partial actions and populate them into the event data.
@@ -1012,7 +1013,7 @@ function MikCEH.ParseForIncomingSpellHitsAndMisses(combatMessage)
  local capturedData = MikCEH.GetCapturedData(combatMessage, "SPELLLOGCRITOTHEROTHER", {"%n", "%s", "%a"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.ACTIONTYPE_HIT, MikCEH.HITTYPE_CRIT, MikCEH.DAMAGETYPE_PHYSICAL, capturedData.Amount, capturedData.SpellName, capturedData.Name);
 
   -- Look for any partial actions and populate them into the event data.
@@ -1030,7 +1031,7 @@ function MikCEH.ParseForIncomingSpellHitsAndMisses(combatMessage)
  local capturedData = MikCEH.GetCapturedData(combatMessage, "SPELLLOGSCHOOLOTHEROTHER", {"%n", "%s", "%c", "%a", "%t"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.ACTIONTYPE_HIT, MikCEH.HITTYPE_NORMAL, capturedData.DamageType, capturedData.Amount, capturedData.SpellName, capturedData.Name);
 
   -- Look for any partial actions and populate them into the event data.
@@ -1045,11 +1046,11 @@ function MikCEH.ParseForIncomingSpellHitsAndMisses(combatMessage)
 
  
  -- Look for a spell crit on your pet.
- local capturedData = MikCEH.GetCapturedData(combatMessage, "SPELLLOGCRITSCHOOLOTHERSELF", {"%n", "%s", "%a", "%t"});
+ local capturedData = MikCEH.GetCapturedData(combatMessage, "SPELLLOGCRITSCHOOLOTHEROTHER", {"%n", "%s", "%c", "%a", "%t"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
-  local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PLAYER_INCOMING, MikCEH.ACTIONTYPE_HIT, MikCEH.HITTYPE_CRIT, capturedData.DamageType, capturedData.Amount, capturedData.SpellName, capturedData.Name);
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
+  local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.ACTIONTYPE_HIT, MikCEH.HITTYPE_CRIT, capturedData.DamageType, capturedData.Amount, capturedData.SpellName, capturedData.Name);
 
   -- Look for any partial actions and populate them into the event data.
   MikCEH.ParseForPartialActions(combatMessage, eventData);
@@ -1066,7 +1067,7 @@ function MikCEH.ParseForIncomingSpellHitsAndMisses(combatMessage)
  local capturedData = MikCEH.GetCapturedData(combatMessage, "SPELLMISSOTHEROTHER", {"%n", "%s", "%c"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.ACTIONTYPE_MISS, nil, nil, nil, capturedData.SpellName, capturedData.Name);
 
   -- Send the event.
@@ -1081,7 +1082,7 @@ function MikCEH.ParseForIncomingSpellHitsAndMisses(combatMessage)
  local capturedData = MikCEH.GetCapturedData(combatMessage, "SPELLDODGEDOTHEROTHER", {"%c", "%n", "%s"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.ACTIONTYPE_DODGE, nil, nil, nil, capturedData.SpellName, capturedData.Name);
 
   -- Send the event.
@@ -1096,7 +1097,7 @@ function MikCEH.ParseForIncomingSpellHitsAndMisses(combatMessage)
  local capturedData = MikCEH.GetCapturedData(combatMessage, "SPELLPARRIEDOTHEROTHER", {"%c", "%n", "%s"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.ACTIONTYPE_PARRY, nil, nil, nil, capturedData.SpellName, capturedData.Name);
 
   -- Send the event.
@@ -1111,7 +1112,7 @@ function MikCEH.ParseForIncomingSpellHitsAndMisses(combatMessage)
  local capturedData = MikCEH.GetCapturedData(combatMessage, "SPELLBLOCKEDOTHEROTHER", {"%c", "%s", "%n"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.ACTIONTYPE_BLOCK, nil, nil, nil, capturedData.SpellName, capturedData.Name);
 
   -- Send the event.
@@ -1126,7 +1127,7 @@ function MikCEH.ParseForIncomingSpellHitsAndMisses(combatMessage)
  local capturedData = MikCEH.GetCapturedData(combatMessage, "SPELLRESISTOTHEROTHER", {"%n", "%s", "%c"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.ACTIONTYPE_RESIST, nil, nil, nil, capturedData.SpellName, capturedData.Name);
 
   -- Send the event.
@@ -1141,7 +1142,7 @@ function MikCEH.ParseForIncomingSpellHitsAndMisses(combatMessage)
  local capturedData = MikCEH.GetCapturedData(combatMessage, "SPELLLOGABSORBOTHEROTHER", {"%n", "%s", "%c"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.ACTIONTYPE_ABSORB, nil, nil, nil, capturedData.SpellName, capturedData.Name);
 
   -- Send the event.
@@ -1156,7 +1157,7 @@ function MikCEH.ParseForIncomingSpellHitsAndMisses(combatMessage)
  local capturedData = MikCEH.GetCapturedData(combatMessage, "SPELLIMMUNEOTHEROTHER", {"%n", "%s", "%c"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.ACTIONTYPE_IMMUNE, nil, nil, nil, capturedData.SpellName, capturedData.Name);
 
   -- Send the event.
@@ -1392,12 +1393,12 @@ function MikCEH.ParseForIncomingSpellHeals(combatMessage)
   -- Return the parse was successful.
   return true;
  end
-
+ 
  -- Look for a critical heal from another player / creature on your pet.
  local capturedData = MikCEH.GetCapturedData(combatMessage, "HEALEDCRITOTHEROTHER", {"%n", "%s", "%c", "%a"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetHealEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.HEALTYPE_CRIT, capturedData.Amount, capturedData.SpellName, capturedData.Name);
 
   -- Get overheal info.
@@ -1416,7 +1417,7 @@ function MikCEH.ParseForIncomingSpellHeals(combatMessage)
  local capturedData = MikCEH.GetCapturedData(combatMessage, "HEALEDOTHEROTHER", {"%n", "%s", "%c", "%a"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetHealEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.HEALTYPE_NORMAL, capturedData.Amount, capturedData.SpellName, capturedData.Name);
 
   -- Get overheal info.
@@ -1436,7 +1437,7 @@ function MikCEH.ParseForIncomingSpellHeals(combatMessage)
  local capturedData = MikCEH.GetCapturedData(combatMessage, "PERIODICAURAHEALOTHEROTHER", {"%c", "%a", "%n", "%s"});
 
  -- If a match was found.
- if (capturedData ~= nil) then
+ if (capturedData ~= nil and UnitName("pet") and string.find(combatMessage, UnitName("pet"))) then
   local eventData = MikCEH.GetHealEventData(MikCEH.DIRECTIONTYPE_PET_INCOMING, MikCEH.HEALTYPE_OVER_TIME, capturedData.Amount, capturedData.SpellName, capturedData.Name);
 
   -- Get overheal info.
