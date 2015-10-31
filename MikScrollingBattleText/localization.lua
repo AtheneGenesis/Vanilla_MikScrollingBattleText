@@ -12,8 +12,8 @@ MikSBT = {};
 -------------------------------------------------------------------------------
 
 MikSBT.MOD_NAME		= "MikScrollingBattleText"
-MikSBT.VERSION_NUMBER	= 4.3;
-MikSBT.VERSION_STRING	= "v4.3";
+MikSBT.VERSION_NUMBER	= 4.31;
+MikSBT.VERSION_STRING	= "v4.31";
 MikSBT.WINDOW_TITLE	= "Mik's Scrolling Battle Text " .. MikSBT.VERSION_STRING .. " - \124cffF58CBA\124hAthene Edit\124h\124r";
 
 MikSBT.COMMAND		= "/msbt";
@@ -97,6 +97,9 @@ MikSBT.AVAILABLE_FONTS = {
  [11] = {Name="FuturaBold", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\FuturaBold.ttf"},
  [12] = {Name="Mail Ray Stuff", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\mailrays.ttf"},
  [13] = {Name="Pepsi", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\pepsi.ttf"},
+ [14] = {Name="Bazooka", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\bazooka.ttf"},
+ [15] = {Name="Cooline", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\cooline.ttf"},
+ [16] = {Name="Yellowjacket", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\yellowjacket.ttf"},
 };
 
 -- Holds the available font outlines.
