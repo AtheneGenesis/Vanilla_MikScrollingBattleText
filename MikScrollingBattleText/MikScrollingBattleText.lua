@@ -106,6 +106,7 @@ ICON_CACHE["pierre de soins majeure"] =			"Interface\\Icons\\inv_stone_04"
 ICON_CACHE["pierre de soins"] =					"Interface\\Icons\\inv_stone_04"
 ICON_CACHE["capturer un esprit"] =				"Interface\\Icons\\Spell_Shadow_Haunting"
 ICON_CACHE["récupération du mana"] =			"Interface\\Icons\\inv_misc_gem_ruby_01"
+ICON_CACHE["maître des éléments"] =				"Interface\\Icons\\spell_fire_masterofelements"
 
 
 -- Cache des spells dont l'icone n'a pas été trouvée

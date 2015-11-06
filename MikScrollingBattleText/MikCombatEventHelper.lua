@@ -1490,7 +1490,7 @@ end
 	if (GetLocale() == "frFR") then
 		eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PLAYER_INCOMING, MikCEH.ACTIONTYPE_HIT, MikCEH.HITTYPE_OVER_TIME, capturedData.DamageType, capturedData.Amount, capturedData.SpellName, capturedData.Name);
 	else
-		eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PLAYER_INCOMING, MikCEH.ACTIONTYPE_HIT, MikCEH.HITTYPE_OVER_TIME, capturedData.DamageType, capturedData.Amount, capturedData.Name, capturedData.SpellName);
+		eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PLAYER_INCOMING, MikCEH.ACTIONTYPE_HIT, MikCEH.HITTYPE_OVER_TIME, capturedData.DamageType, capturedData.Amount, capturedData.SpellName, capturedData.Name);
 	end
 
   -- Look for any partial actions and populate them into the event data.
