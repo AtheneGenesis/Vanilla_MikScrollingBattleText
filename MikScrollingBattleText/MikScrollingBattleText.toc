@@ -1,5 +1,5 @@
 ## Interface: 11200
-## Version: 4.32
+## Version: 4.4
 ## Title: Mik's Scrolling Battle Text
 ## Notes: Scrolls battle information around the character model.
 ## OptionalDeps: SW_FixLogStrings

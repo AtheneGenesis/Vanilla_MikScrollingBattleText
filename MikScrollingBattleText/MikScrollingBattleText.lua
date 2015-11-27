@@ -234,6 +234,7 @@ end
 function MikSBT.OnLoad()
  -- Register for the ADDON_LOADED event.
  MSBTEventFrame:RegisterEvent("ADDON_LOADED");
+ MSBTEventFrame:RegisterEvent("PLAYER_ENTERING_WORLD");
 end
 
 -- **********************************************************************************
@@ -242,11 +243,14 @@ end
 function MikSBT.OnEvent()
  -- When an addon is loaded.
  if (event == "ADDON_LOADED") then
+ 
+  -- Set Game Damage font
+ if MikSBT_Save then
+	DAMAGE_TEXT_FONT = MikSBT.AVAILABLE_FONTS[MikSBT_Save.Profiles[MikSBT_Save.CurrentProfile].BlizzardFontSettings.Normal.FontIndex].Path or "Fonts\\FRIZQT__.TTF"
+ end
+ 
   -- Make sure it's this addon.
   if (arg1 == MikSBT.MOD_NAME) then
-
-   -- Don't get notification for other addons being loaded.
-   this:UnregisterEvent("ADDON_LOADED");
 
    -- Register for the events the helper is interested in receiving.
    MikSBT.RegisterEvents();
@@ -255,6 +259,11 @@ function MikSBT.OnEvent()
    MikSBT.Init();
   end
 
+ end
+ 
+ if (event == "PLAYER_ENTERING_WORLD") then
+	this:UnregisterEvent("ADDON_LOADED");
+	this:UnregisterEvent("PLAYER_ENTERING_WORLD");
  end
 end
 
@@ -363,7 +372,6 @@ function MikSBT.Init()
 
  -- Updates profiles created by older versions.
  MikSBT.UpdateProfiles();
-
 
  -- Set the current profile.
  MikSBT.CurrentProfile = MikSBT_Save.Profiles[MikSBT_Save.CurrentProfile];
@@ -1270,6 +1278,13 @@ function MikSBT.UpdateProfiles()
    profile.EventSettings["MSBT_EVENTTYPE_INCOMING_PET_HOT"] = MikSBT.CopyTable(MikSBT.DEFAULT_CONFIG.EventSettings["MSBT_EVENTTYPE_INCOMING_PET_HOT"]);
    
    profile.CreationVersion = 4.3;
+  end
+  
+  if (profile.CreationVersion < 4.4) then
+  
+	 profile.BlizzardFontSettings = MikSBT.CopyTable(MikSBT.DEFAULT_CONFIG.BlizzardFontSettings);
+	 
+  profile.CreationVersion = 4.4;
   end
   
  end

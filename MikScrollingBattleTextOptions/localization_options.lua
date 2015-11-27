@@ -109,6 +109,7 @@ MikSBTOpt.SLIDERS = {
 
 MikSBTOpt.BUTTONS = {
  ["Tab1FrameEditFontSettingsButton"]	= { Label="Edit Master Font Settings", Tooltip="Edits the master font settings.  These settings will be inherited by each scroll area and the events therein unless they are overridden."},
+ ["Tab1FrameEditBlizzardFontSettingsButton"]	= { Label="Edit Game Damage Font", Tooltip="Edits Blizzard's scrolling text font settings."},
  ["Tab2FrameEditFontSettingsButton"]	= { Label="Edit Scroll Area Fonts", Tooltip="Edits the incoming scroll area font settings.  These settings will be inherited by each event in the incoming scroll area unless they are overridden."},
  ["Tab3FrameEditFontSettingsButton"]	= { Label="Edit Scroll Area Fonts", Tooltip="Edits the outgoing scroll area font settings.  These settings will be inherited by each event in the outgoing scroll area unless they are overridden."},
  ["Tab4FrameEditFontSettingsButton"]	= { Label="Edit Scroll Area Fonts", Tooltip="Edits the notification scroll area font settings.  These settings will be inherited by each event in the notification scroll area unless they are overridden."},
@@ -176,6 +177,10 @@ MikSBTOpt.FONT_SETTINGS_TOOLTIPS = {
   Outline="Set the trigger font outline.",
   InheritFontSize="Set whether or not to inherit the font size from the notification scroll area font settings.",
   FontSize="Set the trigger font size.",
+ },
+ ["Blizzard"] = {
+  FontSettingsTitle="Blizzard",
+  Font="Set the Blizzard scrolling texts font.",
  }
 }
 

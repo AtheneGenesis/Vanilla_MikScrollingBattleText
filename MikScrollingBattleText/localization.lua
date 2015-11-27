@@ -12,8 +12,8 @@ MikSBT = {};
 -------------------------------------------------------------------------------
 
 MikSBT.MOD_NAME		= "MikScrollingBattleText"
-MikSBT.VERSION_NUMBER	= 4.32;
-MikSBT.VERSION_STRING	= "v4.32";
+MikSBT.VERSION_NUMBER	= 4.4;
+MikSBT.VERSION_STRING	= "v4.4";
 MikSBT.WINDOW_TITLE	= "Mik's Scrolling Battle Text " .. MikSBT.VERSION_STRING .. " - \124cffF58CBA\124hAthene Edit\124h\124r";
 
 MikSBT.COMMAND		= "/msbt";
@@ -100,6 +100,12 @@ MikSBT.AVAILABLE_FONTS = {
  [14] = {Name="Bazooka", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\bazooka.ttf"},
  [15] = {Name="Cooline", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\cooline.ttf"},
  [16] = {Name="Yellowjacket", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\yellowjacket.ttf"},
+ [17] = {Name="Defused", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\defused.ttf"},
+ [18] = {Name="Zombie", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\zombie.ttf"},
+ [19] = {Name="Basket Of Hammers", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\basketofhammers.ttf"},
+ [20] = {Name="College", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\college.ttf"},
+ [21] = {Name="Galaxy", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\galaxy.ttf"},
+ [22] = {Name="Skratch Punk", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\skratchpunk.ttf"},
 };
 
 -- Holds the available font outlines.
@@ -170,7 +176,10 @@ MikSBT.DEFAULT_CONFIG = {
  AnimationStep					= 1.5,
  MasterFontSettings = {
   Normal 						= {FontIndex=7, OutlineIndex=2, FontSize=18},
-  Crit 						= {FontIndex=7, OutlineIndex=2, FontSize=26},
+  Crit 							= {FontIndex=7, OutlineIndex=2, FontSize=26},
+ },
+ BlizzardFontSettings = {
+  Normal 						= {FontIndex=6},
  },
  DisplaySettings = {
   Incoming =  {

@@ -2562,6 +2562,20 @@
        </Anchor>
       </Anchors>
      </Button>
+	 
+	 <!-- Edit Blizzard Font Settings Button -->
+     <Button name="$parentEditBlizzardFontSettingsButton" inherits="MSBTButtonTemplate">
+      <Size>
+       <AbsDimension x="200" y="20" />
+      </Size>
+      <Anchors>
+       <Anchor point="BOTTOMLEFT">
+        <Offset>
+         <AbsDimension x="365" y="15" />
+        </Offset>
+       </Anchor>
+      </Anchors>
+     </Button>
 
 
      <!-- Show Partial Effects Checkbox -->
