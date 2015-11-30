@@ -245,7 +245,7 @@ function MikSBT.OnEvent()
  if (event == "ADDON_LOADED") then
  
   -- Set Game Damage font
- if MikSBT_Save then
+ if MikSBT_Save and MikSBT.AVAILABLE_FONTS[MikSBT_Save.Profiles[MikSBT_Save.CurrentProfile].BlizzardFontSettings] then
 	DAMAGE_TEXT_FONT = MikSBT.AVAILABLE_FONTS[MikSBT_Save.Profiles[MikSBT_Save.CurrentProfile].BlizzardFontSettings.Normal.FontIndex].Path or "Fonts\\FRIZQT__.TTF"
  end
  
