@@ -2587,6 +2587,40 @@ function MikCEH.ParseForOutgoingPetHits(combatMessage)
   -- Return the parse was successful.
   return true;
  end
+ 
+  -- Look for a pet elemental hit.
+ local capturedData = MikCEH.GetCapturedData(combatMessage, "COMBATHITSCHOOLOTHEROTHER", {"%c", "%n", "%a", "%t"});
+
+ -- If a match was found.
+ if (capturedData ~= nil) then
+  local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_OUTGOING, MikCEH.ACTIONTYPE_HIT, MikCEH.HITTYPE_NORMAL, MikCEH.DAMAGETYPE_PHYSICAL, capturedData.DamageType, capturedData.Amount, nil, capturedData.Name);
+
+  -- Look for any partial actions and populate them into the event data.
+  MikCEH.ParseForPartialActions(combatMessage, eventData);
+
+  -- Send the event.
+  MikCEH.SendEvent(eventData);
+
+  -- Return the parse was successful.
+  return true;
+ end
+ 
+  -- Look for a pet elemental crit.
+ local capturedData = MikCEH.GetCapturedData(combatMessage, "COMBATHITCRITSCHOOLOTHEROTHER", {"%c", "%n", "%a", "%t"});
+
+ -- If a match was found.
+ if (capturedData ~= nil) then
+  local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_OUTGOING, MikCEH.ACTIONTYPE_HIT, MikCEH.HITTYPE_CRIT, MikCEH.DAMAGETYPE_PHYSICAL, capturedData.DamageType, capturedData.Amount, nil, capturedData.Name);
+
+  -- Look for any partial actions and populate them into the event data.
+  MikCEH.ParseForPartialActions(combatMessage, eventData);
+  
+  -- Send the event.
+  MikCEH.SendEvent(eventData);
+
+  -- Return the parse was successful.
+  return true;
+ end
 
 
  -- Return the parse was NOT successful.
