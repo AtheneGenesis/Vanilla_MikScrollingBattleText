@@ -2593,7 +2593,7 @@ function MikCEH.ParseForOutgoingPetHits(combatMessage)
 
  -- If a match was found.
  if (capturedData ~= nil) then
-  local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_OUTGOING, MikCEH.ACTIONTYPE_HIT, MikCEH.HITTYPE_NORMAL, MikCEH.DAMAGETYPE_PHYSICAL, capturedData.DamageType, capturedData.Amount, nil, capturedData.Name);
+  local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_OUTGOING, MikCEH.ACTIONTYPE_HIT, MikCEH.HITTYPE_NORMAL, capturedData.DamageType, capturedData.Amount, nil, capturedData.Name);
 
   -- Look for any partial actions and populate them into the event data.
   MikCEH.ParseForPartialActions(combatMessage, eventData);
@@ -2610,7 +2610,7 @@ function MikCEH.ParseForOutgoingPetHits(combatMessage)
 
  -- If a match was found.
  if (capturedData ~= nil) then
-  local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_OUTGOING, MikCEH.ACTIONTYPE_HIT, MikCEH.HITTYPE_CRIT, MikCEH.DAMAGETYPE_PHYSICAL, capturedData.DamageType, capturedData.Amount, nil, capturedData.Name);
+  local eventData = MikCEH.GetDamageEventData(MikCEH.DIRECTIONTYPE_PET_OUTGOING, MikCEH.ACTIONTYPE_HIT, MikCEH.HITTYPE_CRIT, capturedData.DamageType, capturedData.Amount, nil, capturedData.Name);
 
   -- Look for any partial actions and populate them into the event data.
   MikCEH.ParseForPartialActions(combatMessage, eventData);
