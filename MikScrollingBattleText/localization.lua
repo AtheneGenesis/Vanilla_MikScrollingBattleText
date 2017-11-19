@@ -106,6 +106,14 @@ MikSBT.AVAILABLE_FONTS = {
  [20] = {Name="College", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\college.ttf"},
  [21] = {Name="Galaxy", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\galaxy.ttf"},
  [22] = {Name="Skratch Punk", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\skratchpunk.ttf"},
+ [23] = {Name="DieDieDie", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\DieDieDie.ttf"},
+ [24] = {Name="BigNoodleTitling", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\BigNoodleTitling.ttf"},
+ [25] = {Name="Continuum", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\Continuum.ttf"},
+ [26] = {Name="Expressway", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\Expressway.ttf"},
+ [27] = {Name="Homespun", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\Homespun.ttf"},
+ [28] = {Name="Myriad-Pro", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\Myriad-Pro.ttf"},
+ [29] = {Name="PT-Sans-Narrow-Bold", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\PT-Sans-Narrow-Bold.ttf"},
+ [30] = {Name="PT-Sans-Narrow-Regular", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\PT-Sans-Narrow-Regular.ttf"},
 };
 
 -- Holds the available font outlines.
