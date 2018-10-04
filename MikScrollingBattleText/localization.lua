@@ -114,6 +114,7 @@ MikSBT.AVAILABLE_FONTS = {
  [28] = {Name="Myriad-Pro", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\Myriad-Pro.ttf"},
  [29] = {Name="PT-Sans-Narrow-Bold", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\PT-Sans-Narrow-Bold.ttf"},
  [30] = {Name="PT-Sans-Narrow-Regular", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\PT-Sans-Narrow-Regular.ttf"},
+ [31] = {Name="Simhei", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\simhei.ttf"},
 };
 
 -- Holds the available font outlines.
