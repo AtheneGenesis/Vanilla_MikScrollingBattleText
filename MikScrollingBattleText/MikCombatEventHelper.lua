@@ -3314,7 +3314,11 @@ function MikCEH.GetGlobalStringInfo(globalStringName)
     -- Check for one of the types that need a string.
     elseif (string.find(currentChar, "[cEefgGiouXxqs]")) then
      -- Replace the format code with lua capture string syntax.
-     searchString = searchString .. "(.+)";
+     if GetLocale() == "zhCN" and globalStringName == "HEALEDSELFOTHER" then -- edge for outgoing heals on others case for zhCN client
+      searchString = searchString .. "([^0-9.]+)"
+     else
+      searchString = searchString .. "(.+)";
+     end
 
      -- Increment the argument number.
      argumentNumber = argumentNumber + 1;
