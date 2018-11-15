@@ -1367,7 +1367,9 @@ function MikCEH.ParseForIncomingSpellHeals(combatMessage)
 
 	  -- Get overheal info.
 	  eventData.Name = playerName
-	  MikCEH.PopulateOverhealData(eventData); -- athenne add
+    if GetLocale() ~= "zhCN" then -- edge case for chinese client (unable to show overheal amount for hot casted on self by other)
+	   MikCEH.PopulateOverhealData(eventData); -- athenne add
+    end
 	  eventData.Name = capturedData.Name
 	  
 	  -- Send the event.
@@ -1442,7 +1444,9 @@ function MikCEH.ParseForIncomingSpellHeals(combatMessage)
 
   -- Get overheal info.
   eventData.Name = UnitName("pet")
-  MikCEH.PopulateOverhealData(eventData); -- athenne add
+  if GetLocale() ~= "zhCN" then -- edge case for chinese client (unable to show overheal amount for hot casted on your pet by other)
+    MikCEH.PopulateOverhealData(eventData); -- athenne add
+  end
   eventData.Name = capturedData.Name
   
   -- Send the event.
@@ -3667,14 +3671,10 @@ function MikCEH.PopulateOverhealData(eventData)
  if (unitID) then
   local healthMissing = UnitHealthMax(unitID) - UnitHealth(unitID);
   local overhealAmount = eventData.Amount - healthMissing;
-  -- DEFAULT_CHAT_FRAME:AddMessage("Health: "..UnitHealth(unitID))
-  -- DEFAULT_CHAT_FRAME:AddMessage("HealthMax: "..UnitHealthMax(unitID))
-  -- DEFAULT_CHAT_FRAME:AddMessage("Missing: "..healthMissing)
-  -- DEFAULT_CHAT_FRAME:AddMessage("Overheal: "..overhealAmount)
-  -- DEFAULT_CHAT_FRAME:AddMessage("Amount: "..eventData.Amount)
 
-  -- Check if any overhealing occured.
-  if (overhealAmount > 0) then
+  -- Check if any overhealing occured （note threshold is 100 because heals on non-group members
+  -- will show show max health 100 instead of the proper maximum health of the target)
+  if (overhealAmount > 0 and UnitHealthMax(unitID) > 100) then
    eventData.PartialActionType = MikCEH.PARTIALACTIONTYPE_OVERHEAL;
    eventData.PartialAmount = overhealAmount;
   end
