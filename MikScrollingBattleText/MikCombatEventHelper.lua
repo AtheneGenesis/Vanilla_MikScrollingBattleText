@@ -3674,7 +3674,7 @@ function MikCEH.PopulateOverhealData(eventData)
 
   -- Check if any overhealing occured （note threshold is 100 because heals on non-group members
   -- will show show max health 100 instead of the proper maximum health of the target)
-  if (overhealAmount > 0 and UnitHealthMax(unitID) > 100) then
+  if (overhealAmount > 0 and UnitHealthMax(unitID) ~= 100) then
    eventData.PartialActionType = MikCEH.PARTIALACTIONTYPE_OVERHEAL;
    eventData.PartialAmount = overhealAmount;
   end
