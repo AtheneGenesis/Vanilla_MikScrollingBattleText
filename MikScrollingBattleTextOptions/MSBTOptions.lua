@@ -27,7 +27,7 @@ local TRIGGER_CONFIGURATION_FRAME_NAME = "MSBTTriggerConfigFrame";
 
 -- The min and max font sizes allowed.
 local MIN_FONT_SIZE = 12;
-local MAX_FONT_SIZE = 32;
+local MAX_FONT_SIZE = 64;
 
 -- The min and max animation steps.
 local MIN_ANIMATION_STEP = 1;
