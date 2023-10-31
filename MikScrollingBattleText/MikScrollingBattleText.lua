@@ -1691,9 +1691,13 @@ function MikSBT.AddAnimation(animationEvent)
 
  -- Set the font object properties.
  animDisplayInfo.FontObject:ClearAllPoints();
- animDisplayInfo.FontObject:SetFont(animDisplayInfo.FontPath, animDisplayInfo.FontSize, animDisplayInfo.FontOutline);
+ -- SetTextHeight does NOT apply if the original font size wouldn't be changed by it
+ -- FontSize tops out at 32 and in vanilla doesn't seem to apply at all - every different size I've tried has refused to work
+ -- TextHeight does scale past 32, but expectedly becomes blurry - still better than unreadable numbers on a 4k display
+ animDisplayInfo.FontObject:SetFont(animDisplayInfo.FontPath, animDisplayInfo.FontSize-1, animDisplayInfo.FontOutline);
  animDisplayInfo.FontObject:SetTextColor(animDisplayInfo.ColorR, animDisplayInfo.ColorG, animDisplayInfo.ColorB);
  animDisplayInfo.FontObject:SetText(animationEvent.Text);
+ animDisplayInfo.FontObject:SetTextHeight(animDisplayInfo.FontSize);
  animDisplayInfo.FontObject:SetAlpha(animDisplayInfo.Alpha);
  animDisplayInfo.FontObject:SetPoint(animDisplayInfo.AnchorPoint, animDisplayInfo.PositionX, animDisplayInfo.PositionY);
  
@@ -2747,7 +2751,7 @@ function MikSBT.DisplayMessage(message, displayType, isSticky, colorR, colorG, c
  end
 
  -- Check if the font size is invalid.
- if (fontSize == nil or fontSize < 12 or fontSize > 32) then
+ if (fontSize == nil or fontSize < 12 or fontSize > 64) then
   fontSize = MikSBT.GetFontSize(scrollArea, nil, false);
  end
 
