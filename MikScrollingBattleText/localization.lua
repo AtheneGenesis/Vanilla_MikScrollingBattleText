@@ -198,6 +198,7 @@ MikSBT.DEFAULT_CONFIG = {
  ShowAllManaGains				= false,
  LowHealthSound					= true,
  LowManaSound					= true,
+ ResistSound					= true,
  AnimationStep					= 1.5,
  MasterFontSettings = {
   Normal 						= {FontIndex=7, OutlineIndex=2, FontSize=18},
@@ -680,7 +681,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_OUTGOING_SPELL_ABSORB = {
    Show						= true,
-   Message						= "(%s) "..ABSORB.."!",
+Message						= "(%s) "..ABSORB.."!",
    FontSettings = {
     Color						= {r=1, g=1, b=0},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},

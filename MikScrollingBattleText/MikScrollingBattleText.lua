@@ -1689,6 +1689,17 @@ function MikSBT.AddAnimation(animationEvent)
  animDisplayInfo.IsCrit = animationEvent.IsCrit;
  animDisplayInfo.IsSticky = animationEvent.IsSticky;
 
+ if (animationEvent.EventType == "MSBT_EVENTTYPE_OUTGOING_SPELL_RESIST") then 
+  -- play sound if enabled
+  if MikSBT.CurrentProfile.ResistSound then
+    if animationEvent.EffectName then
+      if (string.find(animationEvent.EffectName, "Cone of Cold") or string.find(animationEvent.EffectName, "Frost Nova")) then
+        PlaySoundFile("Interface\\AddOns\\MikScrollingBattleText\\sounds\\Resist.mp3");
+      end
+    end
+  end
+ end
+  
  -- Set the font object properties.
  animDisplayInfo.FontObject:ClearAllPoints();
  -- SetTextHeight does NOT apply if the original font size wouldn't be changed by it
