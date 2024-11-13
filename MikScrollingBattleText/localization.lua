@@ -34,7 +34,7 @@ MikSBT.COMMAND_ENABLE		= "enable";
 MikSBT.COMMAND_DISPLAY		= "display";
 MikSBT.COMMAND_SHOWVER		= "version";
 MikSBT.COMMAND_STATS		= "stats";
-MikSBT.COMMAND_SEARCH	      = "search";
+MikSBT.COMMAND_SEARCH		= "search";
 MikSBT.COMMAND_DEBUG		= "debug";
 MikSBT.COMMAND_HELP		= "help";
 
@@ -83,6 +83,15 @@ MikSBT.MSG_ENVIRONMENTAL_SLIME		= L["Slime"];
 ------------------------------
 
 -- Holds the available fonts.
+if (GetLocale()=="ruRU") then
+MikSBT.AVAILABLE_FONTS = {
+ [1] = {Name="Comic", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\comic.ttf"},
+ [2] = {Name="Skratch Punk", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\skratchpunk.ttf"},
+ [3] = {Name="Friz", Path="Fonts\\FRIZQT__.TTF"},
+ [4] = {Name="Morpheus", Path="Fonts\\MORPHEUS.TTF"},
+ [5] = {Name="Skurri", Path="Fonts\\SKURRI.TTF"},
+};
+else
 MikSBT.AVAILABLE_FONTS = {
  [1] = {Name="Adventure", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\adventure.ttf"},
  [2] = {Name="Backsplatter", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\backsplatter.ttf"},
@@ -116,6 +125,7 @@ MikSBT.AVAILABLE_FONTS = {
  [30] = {Name="PT-Sans-Narrow-Regular", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\PT-Sans-Narrow-Regular.ttf"},
  [31] = {Name="Simhei", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\simhei.ttf"},
 };
+end
 
 -- Holds the available font outlines.
 MikSBT.AVAILABLE_OUTLINES = {
@@ -198,6 +208,7 @@ MikSBT.DEFAULT_CONFIG = {
  ShowAllManaGains				= false,
  LowHealthSound					= true,
  LowManaSound					= true,
+ ResistSound					= true,
  AnimationStep					= 1.5,
  MasterFontSettings = {
   Normal 						= {FontIndex=7, OutlineIndex=2, FontSize=18},
@@ -411,7 +422,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_INCOMING_PET_DAMAGE = {
    Show						= true,
-   Message						= "-%a (Pet)",
+   Message						= L["-%a (Pet)"],
    FontSettings = {
     Color						= {r=1, g=1, b=1},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -420,7 +431,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_INCOMING_PET_MISS = {
    Show						= true,
-   Message						= MISS.."! (Pet)",
+   Message						= MISS..L["! (Pet)"],
    FontSettings = {
     Color						= {r=0.2, g=0.4, b=1},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -428,7 +439,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_INCOMING_PET_DODGE = {
    Show						= true,
-   Message						= DODGE.."! (Pet)",
+   Message						= DODGE..L["! (Pet)"],
    FontSettings = {
     Color						= {r=0.2, g=0.4, b=1},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -436,7 +447,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_INCOMING_PET_PARRY = {
    Show						= true,
-   Message						= PARRY.."! (Pet)",
+   Message						= PARRY..L["! (Pet)"],
    FontSettings = {
     Color						= {r=0.2, g=0.4, b=1},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -444,7 +455,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_INCOMING_PET_BLOCK = {
    Show						= true,
-   Message						= BLOCK.."! (Pet)",
+   Message						= BLOCK..L["! (Pet)"],
    FontSettings = {
     Color						= {r=0.2, g=0.4, b=1},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -452,7 +463,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_INCOMING_PET_ABSORB = {
    Show						= true,
-   Message						= ABSORB.."! (Pet)",
+   Message						= ABSORB..L["! (Pet)"],
    FontSettings = {
     Color						= {r=1, g=0.7, b=0},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -460,7 +471,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_INCOMING_PET_IMMUNE = {
    Show						= true,
-   Message						= IMMUNE.."! (Pet)",
+   Message						= IMMUNE..L["! (Pet)"],
    FontSettings = {
     Color						= {r=1, g=0.7, b=0},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -468,7 +479,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_INCOMING_PET_SPELL_DAMAGE = {
    Show						= true,
-   Message						= "-%a (Pet)",
+   Message						= L["-%a (Pet)"],
    FontSettings = {
     Color						= {r=1, g=0.7, b=0},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -477,7 +488,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_INCOMING_PET_SPELL_DOT = {
    Show						= true,
-   Message						= "-%a (Pet)",
+   Message						= L["-%a (Pet)"],
    FontSettings = {
     Color						= {r=1, g=0.7, b=0},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -485,7 +496,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_INCOMING_PET_SPELL_MISS = {
    Show						= true,
-   Message						= MISS.."! (Pet)",
+   Message						= MISS..L["! (Pet)"],
    FontSettings = {
     Color						= {r=0.2, g=0.4, b=1},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -493,7 +504,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_INCOMING_PET_SPELL_DODGE = {
    Show						= true,
-   Message						= DODGE.."! (Pet)",
+   Message						= DODGE..L["! (Pet)"],
    FontSettings = {
     Color						= {r=0.2, g=0.4, b=1},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -501,7 +512,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_INCOMING_PET_SPELL_PARRY = {
    Show						= true,
-   Message						= PARRY.."! (Pet)",
+   Message						= PARRY..L["! (Pet)"],
    FontSettings = {
     Color						= {r=0.2, g=0.4, b=1},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -509,7 +520,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_INCOMING_PET_SPELL_BLOCK = {
    Show						= true,
-   Message						= BLOCK.."! (Pet)",
+   Message						= BLOCK..L["! (Pet)"],
    FontSettings = {
     Color						= {r=0.2, g=0.4, b=1},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -517,7 +528,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_INCOMING_PET_SPELL_RESIST = {
    Show						= true,
-   Message						= RESIST.."! (Pet)",
+   Message						= RESIST..L["! (Pet)"],
    FontSettings = {
     Color						= {r=0.5, g=0, b=0.4},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -525,7 +536,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_INCOMING_PET_SPELL_ABSORB = {
    Show						= true,
-   Message						= "(%s) "..ABSORB.."! (Pet)",
+   Message						= "(%s) "..ABSORB..L["! (Pet)"],
    FontSettings = {
     Color						= {r=1, g=0.7, b=0},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -533,7 +544,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_INCOMING_PET_SPELL_IMMUNE = {
    Show						= true,
-   Message						= "(%s) "..IMMUNE.."! (Pet)",
+   Message						= "(%s) "..IMMUNE..L["! (Pet)"],
    FontSettings = {
     Color						= {r=1, g=0.7, b=0},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -541,7 +552,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_INCOMING_PET_HEAL = {
    Show						= true,
-   Message						= "+%a (%n) (Pet)",
+   Message						= L["+%a (%n) (Pet)"],
    FontSettings = {
     Color						= {r=0, g=1, b=0.4},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -550,7 +561,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_INCOMING_PET_HOT = {
    Show						= true,
-   Message						= "+%a (%n) (Pet)",
+   Message						= L["+%a (%n) (Pet)"],
    FontSettings = {
     Color						= {r=0, g=1, b=0.4},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -733,7 +744,7 @@ MikSBT.DEFAULT_CONFIG = {
 
   MSBT_EVENTTYPE_OUTGOING_PET_DAMAGE = {
    Show						= true,
-   Message						= "Pet %a",
+   Message						= L["Pet %a"],
    FontSettings = {
     Color						= {r=1, g=0.502, b=0},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -743,7 +754,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_OUTGOING_PET_MISS = {
    Show						= true,
-   Message						= "Pet "..MISS.."!",
+   Message						= L["Pet "]..MISS.."!",
    FontSettings = {
     Color						= {r=1, g=0.502, b=0},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -751,7 +762,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_OUTGOING_PET_DODGE = {
    Show						= true,
-   Message						= "Pet "..DODGE.."!",
+   Message						= L["Pet "]..DODGE.."!",
    FontSettings = {
     Color						= {r=1, g=0.502, b=0},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -759,7 +770,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_OUTGOING_PET_PARRY = {
    Show						= true,
-   Message						= "Pet "..PARRY.."!",
+   Message						= L["Pet "]..PARRY.."!",
    FontSettings = {
     Color						= {r=1, g=0.502, b=0},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -767,7 +778,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_OUTGOING_PET_BLOCK = {
    Show						= true,
-   Message						= "Pet "..BLOCK.."!",
+   Message						= L["Pet "]..BLOCK.."!",
    FontSettings = {
     Color						= {r=1, g=0.502, b=0},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -775,7 +786,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_OUTGOING_PET_ABSORB = {
    Show						= true,
-   Message						= "Pet "..ABSORB.."!",
+   Message						= L["Pet "]..ABSORB.."!",
    FontSettings = {
     Color						= {r=0.502, g=0.502, b=1},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -783,7 +794,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_OUTGOING_PET_IMMUNE = {
    Show						= true,
-   Message						= "Pet "..IMMUNE.."!",
+   Message						= L["Pet "]..IMMUNE.."!",
    FontSettings = {
     Color						= {r=0.502, g=0.502, b=1},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -791,7 +802,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_OUTGOING_PET_EVADE = {
    Show						= true,
-   Message						= "Pet "..EVADE.."!",
+   Message						= L["Pet "]..EVADE.."!",
    FontSettings = {
     Color						= {r=1, g=0.502, b=1},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -799,7 +810,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_OUTGOING_PET_SPELL_DAMAGE = {
    Show						= true,
-   Message						= "Pet %a (%s)",
+   Message						= L["Pet %a (%s)"],
    FontSettings = {
     Color						= {r=0.33, g=0.33, b=1},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -808,7 +819,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_OUTGOING_PET_SPELL_MISS = {
    Show						= true,
-   Message						= "Pet "..MISS.."! (%s)",
+   Message						= L["Pet "]..MISS.."! (%s)",
    FontSettings = {
     Color						= {r=0.33, g=0.33, b=1},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -816,7 +827,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_OUTGOING_PET_SPELL_DODGE = {
    Show						= true,
-   Message						= "Pet "..DODGE.."! (%s)",
+   Message						= L["Pet "]..DODGE.."! (%s)",
    FontSettings = {
     Color						= {r=0.33, g=0.33, b=1},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -824,7 +835,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_OUTGOING_PET_SPELL_PARRY = {
    Show						= true,
-   Message						= "Pet "..PARRY.."! (%s)",
+   Message						= L["Pet "]..PARRY.."! (%s)",
    FontSettings = {
     Color						= {r=0.33, g=0.33, b=1},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -832,7 +843,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_OUTGOING_PET_SPELL_BLOCK = {
    Show						= true,
-   Message						= "Pet "..BLOCK.."! (%s)",
+   Message						= L["Pet "]..BLOCK.."! (%s)",
    FontSettings = {
     Color						= {r=0.33, g=0.33, b=1},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -840,7 +851,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_OUTGOING_PET_SPELL_RESIST = {
    Show						= true,
-   Message						= "Pet "..RESIST.."! (%s)",
+   Message						= L["Pet "]..RESIST.."! (%s)",
    FontSettings = {
     Color						= {r=0.502, g=0.502, b=0.698},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -848,7 +859,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_OUTGOING_PET_SPELL_ABSORB = {
    Show						= true,
-   Message						= "Pet "..ABSORB.."! (%s)",
+   Message						= L["Pet "]..ABSORB.."! (%s)",
    FontSettings = {
     Color						= {r=0.502, g=0.502, b=1},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -856,7 +867,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_OUTGOING_PET_SPELL_IMMUNE = {
    Show						= true,
-   Message						= "Pet "..IMMUNE.."! (%s)",
+   Message						= L["Pet "]..IMMUNE.."! (%s)",
    FontSettings = {
     Color						= {r=0.502, g=0.502, b=1},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=0},
@@ -864,7 +875,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_OUTGOING_PET_SPELL_EVADE = {
    Show						= true,
-   Message						= "Pet "..EVADE.."! (%s)",
+   Message						= L["Pet "]..EVADE.."! (%s)",
    FontSettings = {
     Color						= {r=1, g=0.502, b=1},
     Normal 						= {FontIndex=0, OutlineIndex=0, FontSize=22},
@@ -911,7 +922,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_NOTIFICATION_COMBAT_ENTER = {
    Show						= true,
-   Message						= "+Combat",
+   Message						= L["+Combat"],
    IsSticky						= false,
    FontSettings = {
     Color						= {r=1, g=1, b=1},
@@ -920,7 +931,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_NOTIFICATION_COMBAT_LEAVE = {
    Show						= true,
-   Message						= "-Combat",
+   Message						= L["-Combat"],
    IsSticky						= false,
    FontSettings = {
     Color						= {r=1, g=1, b=1},
@@ -947,7 +958,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_NOTIFICATION_CP_GAIN = {
    Show						= true,
-   Message						= "%a CP",
+   Message						= L["%a CP"],
    IsSticky						= false,
    FontSettings = {
     Color						= {r=1, g=0.502, b=0},
@@ -956,7 +967,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_NOTIFICATION_CP_FULL = {
    Show						= true,
-   Message						= "%a CP Finish It!",
+   Message						= L["%a CP Finish It!"],
    IsSticky						= false,
    FontSettings = {
     Color						= {r=1, g=0.502, b=0},
@@ -1010,7 +1021,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_NOTIFICATION_PC_KILLING_BLOW = {
    Show						= true,
-   Message						= "Killing Blow! (%s)",
+   Message						= L["Killing Blow! (%s)"],
    IsSticky						= true,
    FontSettings = {
     Color						= {r=0.333, g=0.333, b=1},
@@ -1019,7 +1030,7 @@ MikSBT.DEFAULT_CONFIG = {
   },
   MSBT_EVENTTYPE_NOTIFICATION_NPC_KILLING_BLOW = {
    Show						= false,
-   Message						= "Killing Blow! (%s)",
+   Message						= L["Killing Blow! (%s)"],
    IsSticky						= true,
    FontSettings = {
     Color						= {r=0.333, g=0.333, b=1},
@@ -1032,7 +1043,7 @@ MikSBT.DEFAULT_CONFIG = {
   MSBT_TRIGGER_LOW_HEALTH = {
    EventSettings = {
     Show				= true,
-    Message				= "Low Health! (%1)",
+    Message				= L["Low Health! (%1)"],
     IsSticky			= false,
     FontSettings = {
      Color				= {r=1, g=0.502, b=0.502},
@@ -1048,7 +1059,7 @@ MikSBT.DEFAULT_CONFIG = {
   MSBT_TRIGGER_LOW_MANA = {
    EventSettings = {
     Show				= true,
-    Message				= "Low Mana! (%1)",
+    Message				= L["Low Mana! (%1)"],
     IsSticky			= false,
     FontSettings = {
      Color				= {r=0.502, g=0.502, b=1},
@@ -1064,7 +1075,7 @@ MikSBT.DEFAULT_CONFIG = {
   MSBT_TRIGGER_LOW_PET_HEALTH = {
    EventSettings = {
     Show				= true,
-    Message				= "Low Pet Health! (%1)",
+    Message				= L["Low Pet Health! (%1)"],
     IsSticky			= false,
     FontSettings = {
      Color				= {r=1, g=0.502, b=0.502},
@@ -1190,7 +1201,7 @@ MikSBT.DEFAULT_CONFIG = {
   MSBT_TRIGGER_WINDFURY = {
    EventSettings = {
     Show				= true,
-    Message				= "Windfury!",
+    Message				= L["Windfury!"],
     IsSticky			= true,
     FontSettings = {
      Color				= {r=1, g=1, b=0},
