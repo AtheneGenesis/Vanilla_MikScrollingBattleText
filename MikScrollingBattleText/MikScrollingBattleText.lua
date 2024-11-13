@@ -1090,9 +1090,10 @@ function MikSBT.FormatEventText(animationEvent)
  end
 
  -- Substitute enemy/player names.
- if (animationEvent.Name ~= nil) and (animationEvent.Name ~= UnitName("player")) then
-  outputString = string.gsub(outputString, "%%n", animationEvent.Name);
-  else
+ local unitID, unitName =  MikCEH.GetUnitIDFromName(animationEvent.Name)
+ if unitName and unitID and not UnitIsUnit(unitID, "player") then
+  outputString = string.gsub(outputString, "%%n", unitName);
+ else
   outputString = string.gsub(outputString, "%(%%n%)", "");
   outputString = string.gsub(outputString, "%%n", "");
  end
@@ -1619,27 +1620,27 @@ function MikSBT.AddAnimation(animationEvent)
  end
 
  -- Color UnitName by class
- local UnitID = MikCEH.GetUnitIDFromName(animationEvent.Name)
- if UnitID then
-	local _, Class = UnitClass(UnitID)
+ local unitID, uName = MikCEH.GetUnitIDFromName(animationEvent.Name)
+ if unitID then
+	local _, Class = UnitClass(unitID)
 	if Class and Class == "PALADIN" then
-		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffF58CBA|h"..animationEvent.Name.."|h|r")
+		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffF58CBA|h"..uName.."|h|r")
 	elseif Class and Class == "DRUID" then
-		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffFF7D0A|h"..animationEvent.Name.."|h|r")
+		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffFF7D0A|h"..uName.."|h|r")
 	elseif Class and Class == "HUNTER" then
-		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffABD473|h"..animationEvent.Name.."|h|r")
+		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffABD473|h"..uName.."|h|r")
 	elseif Class and Class == "MAGE" then
-		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cff69CCF0|h"..animationEvent.Name.."|h|r")
+		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cff69CCF0|h"..uName.."|h|r")
 	elseif Class and Class == "PRIEST" then
-		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffFFFFFF|h"..animationEvent.Name.."|h|r")
+		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffFFFFFF|h"..uName.."|h|r")
 	elseif Class and Class == "ROGUE" then
-		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffFFF569|h"..animationEvent.Name.."|h|r")
+		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffFFF569|h"..uName.."|h|r")
 	elseif Class and Class == "SHAMAN" then
-		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cff0070DE|h"..animationEvent.Name.."|h|r")
+		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cff0070DE|h"..uName.."|h|r")
 	elseif Class and Class == "WARLOCK" then
-		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cff9482C9|h"..animationEvent.Name.."|h|r")
+		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cff9482C9|h"..uName.."|h|r")
 	elseif Class and Class == "WARRIOR" then
-		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffC79C6E|h"..animationEvent.Name.."|h|r")
+		animationEvent.Text = string.gsub(animationEvent.Text, animationEvent.Name, "|cffC79C6E|h"..uName.."|h|r")
 	end
  end
 

@@ -90,6 +90,7 @@ MikSBT.AVAILABLE_FONTS = {
  [3] = {Name="Friz", Path="Fonts\\FRIZQT__.TTF"},
  [4] = {Name="Morpheus", Path="Fonts\\MORPHEUS.TTF"},
  [5] = {Name="Skurri", Path="Fonts\\SKURRI.TTF"},
+ [6] = {Name="Archangelsk", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\archangelsk.ttf"},
 };
 else
 MikSBT.AVAILABLE_FONTS = {
@@ -124,6 +125,7 @@ MikSBT.AVAILABLE_FONTS = {
  [29] = {Name="PT-Sans-Narrow-Bold", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\PT-Sans-Narrow-Bold.ttf"},
  [30] = {Name="PT-Sans-Narrow-Regular", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\PT-Sans-Narrow-Regular.ttf"},
  [31] = {Name="Simhei", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\simhei.ttf"},
+ [32] = {Name="Archangelsk", Path="Interface\\Addons\\MikScrollingBattleText\\Fonts\\archangelsk.ttf"},
 };
 end
 
