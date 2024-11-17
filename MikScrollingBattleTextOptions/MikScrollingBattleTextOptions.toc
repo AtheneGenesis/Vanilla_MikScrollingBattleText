@@ -2,8 +2,10 @@
 ## Version: 4.43
 ## Title: Mik's Scrolling Battle Text Options
 ## Notes: Load on demand options for Mik's Scrolling Battle Text
+## Notes-ruRU: Настройки для Mik's Scrolling Battle Text
 ## Dependencies: MikScrollingBattleText
 ## LoadOnDemand: 1
 localization_options.lua
+localization_options-ruRU.lua
 MSBTOptions.lua
 MSBTOptions.xml

@@ -1,7 +1,7 @@
 local L = AceLibrary("AceLocale-2.2"):new("MikScrollingBattleText")
 
 L:RegisterTranslations("enUS", function()
-    return {
+	return {
 		["Debug mode has been enabled."] = true,
 		["Debug mode has been disabled."] = true,
 		["Event search mode has been enabled.  Searching for: "] = true,
@@ -21,5 +21,20 @@ L:RegisterTranslations("enUS", function()
 		["Fire"] = true,
 		["Lava"] = true,
 		["Slime"] = true,
-    }
+		["Windfury!"] = true,
+		["Low Mana! (%1)"] = true,
+		["Low Pet Health! (%1)"] = true,
+		["%a CP Finish It!"] = true,
+		["+Combat"] = true,
+		["-Combat"] = true,
+		["%a CP"] = true,
+		["Pet "] = true,
+		["Pet %a (%s)"] = true,
+		["Pet %a"] = true,
+		["-%a (Pet)"] = true,
+		["! (Pet)"] = true,
+		["+%a (%n) (Pet)"] = true,
+		["Killing Blow! (%s)"] = true,
+		["Low Health! (%1)"] = true,
+	}
 end)

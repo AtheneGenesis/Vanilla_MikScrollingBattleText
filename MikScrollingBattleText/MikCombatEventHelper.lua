@@ -3555,7 +3555,7 @@ function MikCEH.GetHealEventData(directionType, healType, amount, effectName, na
  -- Erase the combat event data table.
  MikCEH.EraseTable(eventData);
 
- -- Populate the event data fields.
+  -- Populate the event data fields.
  eventData.EventType = MikCEH.EVENTTYPE_HEAL;
  eventData.DirectionType = directionType;
  eventData.HealType = healType;
@@ -3599,7 +3599,16 @@ end
 -- Gets a unit id for the name.
 -- **********************************************************************************
 function MikCEH.GetUnitIDFromName(uName)
- local unitID;
+ local unitID, unitName;
+ 
+
+ if LoggingCombat and LoggingCombat("RAW") == 1 then
+     local _, exist, unitID = pcall(UnitExists, uName)
+     if _ and exist then 
+        unitName = UnitName(unitID)
+        return unitID, unitName
+     end
+ end
 
  -- Check if the name is the player.
  if (uName == playerName) then
@@ -3647,9 +3656,13 @@ function MikCEH.GetUnitIDFromName(uName)
   end
 
  end
-
- -- Return the unit id.
- return unitID;
+ if unitID then
+  unitName = UnitName(unitID)
+  -- Return the unit id.
+   return unitID, unitName
+ else
+    return nil, nil
+ end
 end
 
 
@@ -3659,7 +3672,7 @@ end
 function MikCEH.PopulateOverhealData(eventData)
  -- Get the appropriate unit id for the unit being checked for overheals.
 
- local unitID = MikCEH.GetUnitIDFromName(eventData.Name);
+ local unitID, uName = MikCEH.GetUnitIDFromName(eventData.Name);
  
  if not unitID then
 	if UnitName("target") == eventData.Name then
